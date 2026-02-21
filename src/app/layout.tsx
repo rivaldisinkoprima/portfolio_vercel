@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -35,6 +36,7 @@ export default function RootLayout({
         <main>
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   );
