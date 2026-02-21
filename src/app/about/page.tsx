@@ -37,7 +37,7 @@ export default function AboutPage() {
           <div>
             <h1 className="text-4xl font-bold mb-2">Rivaldi Eka Putra</h1>
             <p className="text-xl text-cyan-400 font-mono mb-4">Polyglot Engineer</p>
-            
+
             <div className="flex flex-wrap gap-4 text-sm text-zinc-400 mb-6">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
@@ -50,12 +50,12 @@ export default function AboutPage() {
             </div>
 
             <p className="text-zinc-300 leading-relaxed mb-6">
-              I&apos;m a Full Stack Developer with expertise at the intersection of{" "}
+              I&apos;m a Future Developer with expertise at the intersection of{" "}
               <span className="text-cyan-400">AI</span>,{" "}
               <span className="text-amber-400">IoT</span>, and{" "}
-              <span className="text-indigo-400">Web Development</span>. 
+              <span className="text-indigo-400">Web Development</span>.
               I specialize in building intelligent systems that solve real-world problems.
-              With a strong foundation in both hardware and software, I bring a unique 
+              With a strong foundation in both hardware and software, I bring a unique
               perspective to every project I work on.
             </p>
 
