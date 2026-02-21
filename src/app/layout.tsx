@@ -17,8 +17,65 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Polyglot Engineer Portfolio | AI, IoT & Web Developer",
-  description: "Portfolio of a Full Stack Developer specializing in AI, IoT, and Web Development. Explore projects, skills, and achievements.",
+  metadataBase: new URL("https://rivaldi-portfolio.vercel.app"),
+  alternates: {
+    canonical: "https://rivaldi-portfolio.vercel.app",
+    languages: {
+      en: "https://rivaldi-portfolio.vercel.app",
+    },
+  },
+  title: {
+    default: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Developer",
+    template: "%s | Rivaldi Eka Putra",
+  },
+  description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Lihat proyek, skills, dan kontak profesional.",
+  keywords: [
+    "Rivaldi Eka Putra",
+    "portfolio",
+    "full stack developer",
+    "AI developer",
+    "IoT",
+    "web developer",
+    "software engineer",
+    "polyglot engineer",
+  ],
+  authors: [{ name: "Rivaldi Eka Putra" }],
+  creator: "Rivaldi Eka Putra",
+  publisher: "Rivaldi Eka Putra",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://rivaldi-portfolio.vercel.app",
+    siteName: "Rivaldi Eka Putra Portfolio",
+    title: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Developer",
+    description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
+    images: [
+      {
+        url: "/profile.jpg",
+        width: 1200,
+        height: 1200,
+        alt: "Rivaldi Eka Putra - Full Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rivaldi Eka Putra | Portfolio",
+    description: "Full Stack Developer - AI, IoT & Web Development",
+    images: ["/profile.jpg"],
+    creator: "@rivaldi",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 
@@ -29,6 +86,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Rivaldi Eka Putra",
+              url: "https://rivaldi-portfolio.vercel.app",
+              jobTitle: "Full Stack Developer",
+              description: "Full Stack Developer specializing in AI, IoT, and Web Development",
+              sameAs: [
+                "https://github.com",
+                "https://linkedin.com",
+                "mailto:hello@example.com"
+              ],
+              worksFor: {
+                "@type": "Organization",
+                name: "Freelance"
+              },
+              knowsAbout: ["AI", "IoT", "Web Development", "Full Stack Development"]
+            })
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased`}
       >

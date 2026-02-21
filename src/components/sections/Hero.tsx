@@ -73,7 +73,7 @@ export function Hero() {
               <div className="flex gap-6 mt-10 justify-center md:justify-start items-center">
                 {[
                   { icon: Github, href: "https://github.com" },
-                  { icon: Linkedin, href: "https://linkedin.com" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/rivaldiekaputr/" },
                   { icon: Mail, href: "mailto:hello@example.com" },
                 ].map((social, index) => (
                   <a

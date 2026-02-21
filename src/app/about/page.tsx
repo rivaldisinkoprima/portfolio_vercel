@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -5,9 +6,9 @@ import { ArrowLeft, Download, MapPin, Mail, Github, Linkedin } from "lucide-reac
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata = {
-  title: "About | Polyglot Engineer Portfolio",
-  description: "Learn more about me",
+export const metadata: Metadata = {
+  title: "About | Rivaldi Eka Putra - Polyglot Engineer",
+  description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Pelajari lebih lanjut tentang latar belakang, skills, dan pengalaman saya.",
 };
 
 export default function AboutPage() {
@@ -74,8 +75,8 @@ export default function AboutPage() {
               >
                 <Github className="w-5 h-5" />
               </a>
-              <a
-                href="https://linkedin.com"
+<a
+                href="https://www.linkedin.com/in/rivaldiekaputr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors"
