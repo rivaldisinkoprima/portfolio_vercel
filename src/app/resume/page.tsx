@@ -23,7 +23,7 @@ export default function ResumePage() {
         <header className="mb-12">
           <h1 className="text-4xl font-bold mb-4">My Resume</h1>
           <p className="text-zinc-400 mb-6">
-            Download my resume or view the details below ya.
+            Download my resume or view the details below.
           </p>
           <Button
             asChild
