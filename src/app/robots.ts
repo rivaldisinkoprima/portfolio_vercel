@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/"],
     },
-    sitemap: "https://rivaldi-portfolio.vercel.app/sitemap.xml",
+    sitemap: "https://valporto.my.id/sitemap.xml",
   };
 }
