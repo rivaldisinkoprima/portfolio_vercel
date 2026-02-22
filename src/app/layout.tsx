@@ -17,11 +17,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://valporto.my.id"),
+  metadataBase: new URL("https://www.valporto.my.id"),
   alternates: {
-    canonical: "https://valporto.my.id",
+    canonical: "https://www.valporto.my.id",
     languages: {
-      en: "https://valporto.my.id",
+      en: "https://www.valporto.my.id",
     },
   },
   title: {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://valporto.my.id",
+    url: "https://www.valporto.my.id",
     siteName: "Rivaldi Eka Putra Portfolio",
     title: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Developer",
     description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
@@ -94,7 +94,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Rivaldi Eka Putra",
-              url: "https://valporto.my.id",
+              url: "https://www.valporto.my.id",
               jobTitle: "Full Stack Developer",
               description: "Full Stack Developer specializing in AI, IoT, and Web Development",
               sameAs: [

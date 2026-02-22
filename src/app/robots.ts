@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/"],
     },
-    sitemap: "https://valporto.my.id/sitemap.xml",
+    sitemap: "https://www.valporto.my.id/sitemap.xml",
   };
 }
