@@ -22,12 +22,12 @@ export default function ResumePage() {
 
         <header className="mb-12">
           <h1 className="text-4xl font-bold mb-4">My Resume</h1>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-muted-foreground mb-6">
             Download my resume or view the details below.
           </p>
           <Button
             asChild
-            className="bg-cyan-500 hover:bg-cyan-600 text-black"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             <a
               href="https://drive.google.com/uc?export=view&id=1o0RckJ89aXKlGuSaIJ1WJHEdhblAS3wA"
@@ -41,13 +41,13 @@ export default function ResumePage() {
         </header>
 
         <div className="space-y-8">
-          <Card className="bg-zinc-900/80 border-zinc-800">
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="flex items-center gap-2 mb-4">
-                <FileText className="w-5 h-5 text-cyan-400" />
+                <FileText className="w-5 h-5 text-primary" />
                 <h2 className="text-xl font-semibold">Page 1</h2>
               </div>
-              <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-zinc-700">
+              <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-border">
                 <Image
                   src="/resume1.jpg"
                   alt="Resume Page 1 - Rivaldi Eka Putra Professional Experience"
@@ -58,13 +58,13 @@ export default function ResumePage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-900/80 border-zinc-800">
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="flex items-center gap-2 mb-4">
-                <FileText className="w-5 h-5 text-cyan-400" />
+                <FileText className="w-5 h-5 text-primary" />
                 <h2 className="text-xl font-semibold">Page 2</h2>
               </div>
-              <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-zinc-700">
+              <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-border">
                 <Image
                   src="/resume2.jpg"
                   alt="Resume Page 2 - Rivaldi Eka Putra Skills and Education"

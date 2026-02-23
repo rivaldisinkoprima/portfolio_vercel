@@ -20,25 +20,25 @@ export function IoTDashboardDemo() {
   }, []);
 
   return (
-    <Card className="mt-6 bg-zinc-900 border-zinc-800">
+    <Card className="mt-6 bg-card border-border">
       <CardContent className="p-4">
         <h4 className="font-mono text-sm text-muted-foreground mb-4">
           Digital Twin Simulation
         </h4>
         <div className="grid grid-cols-3 gap-4">
-          <div className="flex flex-col items-center p-3 rounded-lg bg-zinc-800/50">
+          <div className="flex flex-col items-center p-3 rounded-lg bg-muted">
             <Thermometer
-              className={`w-6 h-6 mb-2 ${temperature > 26 ? "text-red-400" : "text-cyan-400"}`}
+              className={`w-6 h-6 mb-2 ${temperature > 26 ? "text-red-500" : "text-primary"}`}
             />
             <span className="text-2xl font-mono font-bold">{temperature}°C</span>
             <span className="text-xs text-muted-foreground">Temperature</span>
           </div>
-          <div className="flex flex-col items-center p-3 rounded-lg bg-zinc-800/50">
-            <Activity className="w-6 h-6 mb-2 text-amber-400" />
+          <div className="flex flex-col items-center p-3 rounded-lg bg-muted">
+            <Activity className="w-6 h-6 mb-2 text-amber-500" />
             <span className="text-2xl font-mono font-bold">{humidity}%</span>
             <span className="text-xs text-muted-foreground">Humidity</span>
           </div>
-          <div className="flex flex-col items-center p-3 rounded-lg bg-zinc-800/50">
+          <div className="flex flex-col items-center p-3 rounded-lg bg-muted">
             <motion.div
               animate={{
                 scale: lightsOn ? 1.1 : 1,
@@ -46,7 +46,7 @@ export function IoTDashboardDemo() {
               }}
             >
               <Lightbulb
-                className={`w-6 h-6 mb-2 ${lightsOn ? "text-amber-400" : "text-zinc-600"}`}
+                className={`w-6 h-6 mb-2 ${lightsOn ? "text-amber-500" : "text-muted-foreground"}`}
               />
             </motion.div>
             <span className="text-lg font-mono font-bold">

@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -143,14 +144,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
+<body
         className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <SmoothScroll />
-        <Navbar />
-        <main className="pt-16">
-          {children}
-        </main>
+        <ThemeProvider>
+          <SmoothScroll />
+          <Navbar />
+          <main className="pt-16">
+            {children}
+          </main>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

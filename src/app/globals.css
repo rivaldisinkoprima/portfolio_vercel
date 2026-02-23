@@ -17,6 +17,36 @@
   --border: #27272a;
   --destructive: #ef4444;
   --destructive-foreground: #fafafa;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #18181b;
+  --bg-tertiary: #27272a;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+}
+
+.light {
+  --background: #fafafa;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --primary: #0891b2;
+  --primary-foreground: #fafafa;
+  --secondary: #f59e0b;
+  --secondary-foreground: #09090b;
+  --accent: #6366f1;
+  --accent-foreground: #fafafa;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5;
+  --bg-tertiary: #e4e4e7;
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
 }
 
 @theme inline {
@@ -49,8 +79,16 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+.light body {
+  background: #f8fafc;
+}
+
 .glow-cyan {
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.light .glow-cyan {
+  box-shadow: 0 0 20px rgba(8, 145, 178, 0.2);
 }
 
 .glow-amber {
@@ -148,8 +186,162 @@ html.lenis body {
   background-size: 24px 24px;
 }
 
+.light .bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+}
+
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.light .bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
+
+/* Light mode overrides for hardcoded zinc colors */
+.light .bg-zinc-900 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.light .bg-zinc-900\/80 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.light .bg-zinc-900\/50 {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.light .bg-zinc-900\/40 {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.light .bg-zinc-900\/30 {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.light .bg-zinc-900\/60 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.light .bg-zinc-800 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.light .bg-zinc-800\/50 {
+  background-color: rgba(244, 244, 245, 0.5) !important;
+}
+
+.light .border-zinc-800 {
+  border-color: var(--border) !important;
+}
+
+.light .border-zinc-700 {
+  border-color: #d4d4d8 !important;
+}
+
+.light .border-zinc-800\/50 {
+  border-color: rgba(228, 228, 231, 0.5) !important;
+}
+
+.light .border-zinc-700\/80 {
+  border-color: rgba(212, 212, 216, 0.8) !important;
+}
+
+.light .text-zinc-400 {
+  color: var(--text-secondary) !important;
+}
+
+.light .text-zinc-500 {
+  color: var(--text-muted) !important;
+}
+
+.light .text-zinc-300 {
+  color: var(--text-primary) !important;
+}
+
+.light .hover\:bg-zinc-800:hover {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.light .hover\:border-zinc-700:hover {
+  border-color: #d4d4d8 !important;
+}
+
+.light .hover\:text-white:hover {
+  color: #09090b !important;
+}
+
+.light .group-hover\:text-cyan-400:hover {
+  color: var(--primary) !important;
+}
+
+.light .group:hover {
+  border-color: #cbd5e1 !important;
+}
+
+.light input,
+.light textarea {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border) !important;
+  color: var(--foreground) !important;
+}
+
+.light ::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Light mode text colors */
+.light .text-white {
+  color: var(--foreground) !important;
+}
+
+.light .text-zinc-100 {
+  color: var(--foreground) !important;
+}
+
+.light .text-zinc-200 {
+  color: var(--text-primary) !important;
+}
+
+.light .text-zinc-300 {
+  color: var(--text-secondary) !important;
+}
+
+.light .hover\:text-white:hover {
+  color: var(--foreground) !important;
+}
+
+.light .bg-slate-950 {
+  background-color: var(--bg-primary) !important;
+}
+
+.light .group-hover\:text-cyan-400:hover {
+  color: var(--primary) !important;
+}
+
+.light .group:hover {
+  border-color: #cbd5e1 !important;
+}
+
+/* Light mode background fixes */
+.light .bg-slate-950\/80 {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Light mode button fixes */
+.light .bg-black {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+}
+
+.light .text-black {
+  color: var(--foreground) !important;
+}
+
+/* Light mode overlay fixes */
+.light .bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }

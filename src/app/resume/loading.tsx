@@ -14,7 +14,7 @@ export default function Loading() {
 
         <div className="space-y-8">
           {[1, 2].map((i) => (
-            <div key={i} className="bg-zinc-900/80 border border-zinc-800 rounded-lg p-6 space-y-4">
+            <div key={i} className="bg-card border border-border rounded-lg p-6 space-y-4">
               <div className="flex items-center gap-2">
                 <Skeleton className="w-5 h-5" />
                 <Skeleton className="w-20 h-6" />

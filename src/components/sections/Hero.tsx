@@ -37,53 +37,53 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-xs md:text-sm font-bold text-cyan-400/80 uppercase tracking-widest mb-4">
+              <h2 className="text-xs md:text-sm font-bold text-primary/80 uppercase tracking-widest mb-4">
                 Dynamic Web Portfolio
               </h2>
 
               <TextGenerateEffect
                 words="Building Intelligent Systems for the Future"
-                className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight"
+                className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 tracking-tight"
               />
 
-              <p className="text-zinc-400 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-base sm:text-lg lg:text-xl max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed">
                 Hi, I&apos;m{" "}
-                <span className="text-cyan-400 font-semibold">
+                <span className="text-primary font-semibold">
                   Rivaldi Eka Putra
                 </span>
                 . A Polyglot Engineer crafting solutions at the intersection of{" "}
-                <span className="text-purple-400 font-medium">AI</span>,{" "}
-                <span className="text-amber-400 font-medium">IoT</span>, and{" "}
-                <span className="text-indigo-400 font-medium">Web</span>.
+                <span className="text-purple-500 font-medium">AI</span>,{" "}
+                <span className="text-amber-500 font-medium">IoT</span>, and{" "}
+                <span className="text-indigo-500 font-medium">Web</span>.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 items-center md:items-start justify-center md:justify-start">
                 <Link
                   href="/projects"
-                  className="relative inline-flex h-12 w-full sm:w-auto overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-950 group"
+                  className="relative inline-flex h-12 w-full sm:w-auto overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background group"
                 >
                   <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#22d3ee_0%,#818cf8_50%,#22d3ee_100%)]" />
-                  <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-8 py-1 text-sm font-medium text-white backdrop-blur-3xl gap-2 transition-all group-hover:bg-slate-950/80">
+                  <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-background px-8 py-1 text-sm font-medium text-foreground backdrop-blur-3xl gap-2 transition-all group-hover:bg-muted">
                     See My Work <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Link>
 
                 <Link
                   href="/contact"
-                  className="h-12 w-full sm:w-auto px-8 inline-flex items-center justify-center rounded-full border border-zinc-700 bg-transparent text-sm font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+                  className="h-12 w-full sm:w-auto px-8 inline-flex items-center justify-center rounded-full border border-border bg-transparent text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                 >
                   Contact Me
                 </Link>
               </div>
 
               <div className="flex gap-6 mt-10 justify-center md:justify-start items-center">
-{socials.map((social, index) => (
+                {socials.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 hover:bg-zinc-800 transition-all hover:scale-110"
+                    className="p-3 rounded-full bg-muted border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-muted transition-all hover:scale-110"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
@@ -100,9 +100,9 @@ export function Hero() {
             className="flex-1 relative max-w-[280px] sm:max-w-md w-full shrink-0"
           >
             <div className="relative w-full aspect-square mx-auto">
-              <div className="relative w-full h-full rounded-full border-[1px] border-zinc-800/80 p-2 overflow-hidden bg-zinc-900/30 backdrop-blur-md shadow-2xl">
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900">
-<Image
+              <div className="relative w-full h-full rounded-full border border-border/50 p-2 overflow-hidden bg-card/30 backdrop-blur-md shadow-2xl">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-card">
+                  <Image
                     src="/profile.jpg"
                     alt="Rivaldi Eka Putra - Full Stack Developer specializing in AI, IoT, and Web Development"
                     fill
@@ -122,10 +122,10 @@ export function Hero() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -top-2 -right-2 md:-top-6 md:-right-6 bg-zinc-900/90 backdrop-blur-sm border border-zinc-800 p-2.5 sm:p-3 rounded-2xl shadow-xl flex items-center gap-2 z-20"
+                className="absolute -top-2 -right-2 md:-top-6 md:-right-6 bg-card/90 backdrop-blur-sm border border-border p-2.5 sm:p-3 rounded-2xl shadow-xl flex items-center gap-2 z-20"
               >
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[10px] sm:text-xs font-mono text-zinc-300 whitespace-nowrap">
+                <span className="text-[10px] sm:text-xs font-mono text-foreground whitespace-nowrap">
                   Open to Work
                 </span>
               </motion.div>
@@ -138,9 +138,9 @@ export function Hero() {
                   ease: "easeInOut",
                   delay: 1,
                 }}
-                className="absolute -bottom-2 -left-2 md:-bottom-6 md:-left-6 bg-zinc-900/90 backdrop-blur-sm border border-zinc-800 p-2.5 sm:p-3 rounded-2xl shadow-xl z-20"
+                className="absolute -bottom-2 -left-2 md:-bottom-6 md:-left-6 bg-card/90 backdrop-blur-sm border border-border p-2.5 sm:p-3 rounded-2xl shadow-xl z-20"
               >
-                <span className="text-[10px] sm:text-xs font-mono text-cyan-400 whitespace-nowrap">
+                <span className="text-[10px] sm:text-xs font-mono text-primary whitespace-nowrap">
                   Full Stack Engineer
                 </span>
               </motion.div>

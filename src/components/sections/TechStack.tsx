@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 
 const techStack = [
-  { name: "Next.js", color: "text-white" },
-  { name: "TypeScript", color: "text-blue-400" },
-  { name: "Python", color: "text-yellow-400" },
-  { name: "React", color: "text-cyan-400" },
-  { name: "Node.js", color: "text-green-400" },
-  { name: "PostgreSQL", color: "text-blue-300" },
-  { name: "TensorFlow", color: "text-orange-400" },
-  { name: "ESP32", color: "text-amber-400" },
-  { name: "MQTT", color: "text-zinc-400" },
-  { name: "Docker", color: "text-blue-500" },
-  { name: "AWS", color: "text-yellow-300" },
-  { name: "LangChain", color: "text-purple-400" },
+  { name: "Next.js", color: "text-foreground" },
+  { name: "TypeScript", color: "text-blue-500" },
+  { name: "Python", color: "text-yellow-500" },
+  { name: "React", color: "text-cyan-500" },
+  { name: "Node.js", color: "text-green-500" },
+  { name: "PostgreSQL", color: "text-blue-600" },
+  { name: "TensorFlow", color: "text-orange-500" },
+  { name: "ESP32", color: "text-amber-500" },
+  { name: "MQTT", color: "text-muted-foreground" },
+  { name: "Docker", color: "text-blue-600" },
+  { name: "AWS", color: "text-yellow-500" },
+  { name: "LangChain", color: "text-purple-500" },
 ];
 
 export function TechStack() {
@@ -33,10 +33,10 @@ export function TechStack() {
         <div className="relative overflow-hidden">
           <div className="flex animate-marquee">
             {[...techStack, ...techStack].map((tech, index) => (
-              <Badge
+<Badge
                 key={index}
                 variant="outline"
-                className="mx-3 py-2 px-4 text-sm border-zinc-700 bg-zinc-900/50"
+                className="mx-3 py-2 px-4 text-sm border-border bg-muted"
               >
                 <span className={tech.color}>{tech.name}</span>
               </Badge>

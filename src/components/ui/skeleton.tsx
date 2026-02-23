@@ -10,7 +10,7 @@ export function Skeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        "animate-pulse bg-zinc-800 rounded-md",
+        "animate-pulse bg-muted rounded-md",
         className
       )}
     />
@@ -19,7 +19,7 @@ export function Skeleton({ className }: SkeletonProps) {
 
 export function CardSkeleton() {
   return (
-    <div className="bg-zinc-900/80 border border-zinc-800 rounded-lg p-6">
+    <div className="bg-card border border-border rounded-lg p-6">
       <Skeleton className="w-16 h-6 mb-3" />
       <Skeleton className="w-3/4 h-6 mb-2" />
       <Skeleton className="w-full h-4 mb-2" />
@@ -32,7 +32,7 @@ export function CardSkeleton() {
 export function BentoSkeleton() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
-      <div className="md:col-span-2 bg-zinc-900/80 border border-zinc-800 rounded-lg p-6">
+      <div className="md:col-span-2 bg-card border border-border rounded-lg p-6">
         <Skeleton className="w-32 h-6 mb-4" />
         <div className="flex gap-2 mb-4">
           <Skeleton className="w-16 h-6" />
@@ -41,7 +41,7 @@ export function BentoSkeleton() {
         </div>
         <Skeleton className="w-48 h-4" />
       </div>
-      <div className="md:col-span-2 bg-zinc-900/80 border border-zinc-800 rounded-lg p-6">
+      <div className="md:col-span-2 bg-card border border-border rounded-lg p-6">
         <Skeleton className="w-8 h-8 mx-auto mb-2" />
         <Skeleton className="w-32 h-4 mx-auto" />
         <Skeleton className="w-24 h-3 mx-auto mt-2" />

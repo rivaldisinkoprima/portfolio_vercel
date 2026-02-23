@@ -1,4 +1,4 @@
-import { BentoSkeleton, HeroSkeleton } from "@/components/ui/skeleton";
+import { BentoSkeleton, HeroSkeleton, Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
   return (
@@ -21,8 +21,4 @@ export default function Loading() {
       </div>
     </main>
   );
-}
-
-function Skeleton({ className }: { className?: string }) {
-  return <div className={`animate-pulse bg-zinc-800 rounded-md ${className}`} />;
 }

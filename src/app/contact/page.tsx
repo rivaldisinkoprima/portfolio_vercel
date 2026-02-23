@@ -13,7 +13,6 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState<
@@ -68,19 +67,19 @@ export default function ContactPage() {
       <div className="max-w-2xl mx-auto px-6 py-12">
         <header className="mb-12">
           <h1 className="text-4xl font-bold mb-4">Get in Touch</h1>
-          <p className="text-zinc-400">
+          <p className="text-muted-foreground">
             Have a project in mind or want to collaborate? Feel free to reach
             out!
           </p>
         </header>
 
-        <Card className="bg-zinc-900/80 border-zinc-800 mb-8">
+        <Card className="bg-card border-border mb-8">
           <CardContent className="p-8">
             {formState === "success" ? (
               <div className="text-center py-8">
-                <CheckCircle2 className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
-                <p className="text-zinc-400 mb-6">
+                <p className="text-muted-foreground mb-6">
                   Thank you for reaching out. I&apos;ll get back to you as soon
                   as possible.
                 </p>
@@ -104,7 +103,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg bg-muted border border-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     placeholder="Your name"
                   />
                 </div>
@@ -123,7 +122,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg bg-muted border border-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -142,13 +141,13 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-muted border border-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
                     placeholder="Your message..."
                   />
                 </div>
 
                 {formState === "error" && (
-                  <div className="flex items-center gap-2 text-red-400 text-sm">
+                  <div className="flex items-center gap-2 text-destructive text-sm">
                     <AlertCircle className="w-4 h-4" />
                     <span>
                       Something went wrong. Please try again or email me
@@ -160,7 +159,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   disabled={formState === "loading"}
-                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-black disabled:opacity-50"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50"
                 >
                   {formState === "loading" ? (
                     <>
@@ -184,14 +183,14 @@ export default function ContactPage() {
           <div className="grid gap-4">
             <a
               href="mailto:rivaldiekaputr@gmail.com"
-              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+              className="flex items-center gap-4 p-4 rounded-lg bg-card/50 border border-border hover:bg-muted hover:border-primary/30 transition-colors"
             >
-              <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                <Mail className="w-6 h-6 text-cyan-400" />
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                <Mail className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <p className="font-semibold">Email</p>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   rivaldiekaputr@gmail.com
                 </p>
               </div>
@@ -201,14 +200,14 @@ export default function ContactPage() {
               href="https://instagram.com/rivaldiekaptr"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+              className="flex items-center gap-4 p-4 rounded-lg bg-card/50 border border-border hover:bg-muted hover:border-primary/30 transition-colors"
             >
               <div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
-                <Instagram className="w-6 h-6 text-pink-400" />
+                <Instagram className="w-6 h-6 text-pink-500" />
               </div>
               <div>
                 <p className="font-semibold">Instagram</p>
-                <p className="text-sm text-zinc-400">@rivaldiekaptr</p>
+                <p className="text-sm text-muted-foreground">@rivaldiekaptr</p>
               </div>
             </a>
 
@@ -216,14 +215,14 @@ export default function ContactPage() {
               href="https://www.linkedin.com/in/rivaldiekaputr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+              className="flex items-center gap-4 p-4 rounded-lg bg-card/50 border border-border hover:bg-muted hover:border-primary/30 transition-colors"
             >
               <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-                <Linkedin className="w-6 h-6 text-blue-400" />
+                <Linkedin className="w-6 h-6 text-blue-500" />
               </div>
               <div>
                 <p className="font-semibold">LinkedIn</p>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-muted-foreground">
                   linkedin.com/in/rivaldiekaputr
                 </p>
               </div>
@@ -233,14 +232,14 @@ export default function ContactPage() {
               href="https://wa.me/62895616181056"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+              className="flex items-center gap-4 p-4 rounded-lg bg-card/50 border border-border hover:bg-muted hover:border-primary/30 transition-colors"
             >
               <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
-                <Phone className="w-6 h-6 text-green-400" />
+                <Phone className="w-6 h-6 text-green-500" />
               </div>
               <div>
                 <p className="font-semibold">WhatsApp</p>
-                <p className="text-sm text-zinc-400">+62 895 616 181056</p>
+                <p className="text-sm text-muted-foreground">+62 895 616 181056</p>
               </div>
             </a>
           </div>

@@ -79,21 +79,21 @@ export function Contact({ serverCertificates }: ContactProps) {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-6">
-            <Award className="w-6 h-6 text-amber-400" />
+            <Award className="w-6 h-6 text-amber-500" />
             <h2 className="text-2xl font-bold">Certificates</h2>
-            <span className="text-sm text-zinc-500">({certificates.length})</span>
+            <span className="text-sm text-muted-foreground">({certificates.length})</span>
           </div>
 
           <div className="relative overflow-hidden">
-            <div 
+            <div
               className="flex w-[500%] animate-marquee-certs"
-              style={{ 
+              style={{
                 animationPlayState: isLoaded ? 'running' : 'paused'
               }}
             >
               {duplicatedCerts.map((cert, index) => (
-                <div 
-                  key={`${cert.id}-${index}`} 
+                <div
+                  key={`${cert.id}-${index}`}
                   className="px-2"
                   style={{ width: `${itemWidth}%` }}
                 >
@@ -107,8 +107,8 @@ export function Contact({ serverCertificates }: ContactProps) {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="text-white text-sm font-medium">View</span>
+                    <div className="absolute inset-0 bg-foreground/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="text-background text-sm font-medium">View</span>
                     </div>
                   </motion.div>
                 </div>
@@ -124,13 +124,13 @@ export function Contact({ serverCertificates }: ContactProps) {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <Card className="bg-gradient-to-br from-zinc-900 to-zinc-900/50 border-zinc-800">
+        <Card className="bg-gradient-to-br from-card to-card/50 border-border">
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl font-bold mb-4">Let&apos;s Work Together</h2>
-            <p className="text-zinc-400 mb-6 max-w-md mx-auto">
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
               I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
-<div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-4">
               <Button variant="outline" size="icon" asChild>
                 <a href="https://instagram.com/rivaldiekaptr" target="_blank" rel="noopener noreferrer">
                   <Instagram className="w-5 h-5" />
@@ -151,7 +151,7 @@ export function Contact({ serverCertificates }: ContactProps) {
                   <Phone className="w-5 h-5" />
                 </a>
               </Button>
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-black" asChild>
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
                 <a href="mailto:rivaldiekaputr@gmail.com">
                   <Send className="w-4 h-4 mr-2" />
                   Get in Touch
@@ -168,7 +168,7 @@ export function Contact({ serverCertificates }: ContactProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4"
             onClick={closeLightbox}
           >
             <button
@@ -176,7 +176,7 @@ export function Contact({ serverCertificates }: ContactProps) {
                 e.stopPropagation();
                 closeLightbox();
               }}
-              className="absolute top-4 right-4 text-white hover:text-zinc-300 p-2"
+              className="absolute top-4 right-4 text-foreground hover:text-muted-foreground p-2"
             >
               <X className="w-8 h-8" />
             </button>
@@ -196,7 +196,7 @@ export function Contact({ serverCertificates }: ContactProps) {
                 height={900}
                 className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
               />
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded-full">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-foreground text-sm bg-card/80 px-4 py-2 rounded-full">
                 {lightboxIndex + 1} / {certificates.length}
               </div>
             </motion.div>

@@ -61,9 +61,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.category}
             </Badge>
             <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-            <p className="text-xl text-zinc-400 mb-6">{project.description}</p>
+            <p className="text-xl text-muted-foreground mb-6">{project.description}</p>
             
-            <div className="flex flex-wrap gap-4 text-sm text-zinc-500">
+            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 <span>{project.date}</span>
@@ -72,14 +72,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <Tag className="w-4 h-4" />
                 <div className="flex gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="text-zinc-400">#{tag}</span>
+                    <span key={tag} className="text-muted-foreground">#{tag}</span>
                   ))}
                 </div>
               </div>
             </div>
           </header>
 
-          <div className="prose prose-invert prose-zinc max-w-none">
+          <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary prose-a:text-primary">
             <ReactMarkdown>{project.content}</ReactMarkdown>
           </div>
         </article>

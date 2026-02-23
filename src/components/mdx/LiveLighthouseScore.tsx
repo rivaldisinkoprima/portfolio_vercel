@@ -18,10 +18,10 @@ function ScoreBadge({ label, score, color }: ScoreProps) {
         transition={{ delay: 0.2, type: "spring" }}
         className="relative w-16 h-16 rounded-full flex items-center justify-center"
         style={{
-          background: `conic-gradient(${color} ${score * 3.6}deg, #27272a 0deg)`,
+          background: `conic-gradient(${color} ${score * 3.6}deg, var(--muted) 0deg)`,
         }}
       >
-        <div className="w-12 h-12 rounded-full bg-zinc-900 flex items-center justify-center">
+        <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center">
           <span className="text-lg font-bold font-mono">{score}</span>
         </div>
       </motion.div>
@@ -32,7 +32,7 @@ function ScoreBadge({ label, score, color }: ScoreProps) {
 
 export function LiveLighthouseScore() {
   return (
-    <Card className="mt-6 bg-zinc-900 border-zinc-800">
+    <Card className="mt-6 bg-card border-border">
       <CardContent className="p-4">
         <h4 className="font-mono text-sm text-muted-foreground mb-4">
           Live Lighthouse Score

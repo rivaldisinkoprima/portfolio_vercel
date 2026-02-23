@@ -26,7 +26,7 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-[200px_1fr] gap-8 items-start">
           <div className="flex-shrink-0">
-            <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-cyan-500/50 shadow-lg shadow-cyan-500/20">
+            <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20">
               <Image
                 src="/profile.jpg"
                 alt="Rivaldi Eka Putra - Polyglot Engineer"
@@ -39,28 +39,28 @@ export default function AboutPage() {
 
           <div>
             <h1 className="text-4xl font-bold mb-2">Rivaldi Eka Putra</h1>
-            <p className="text-xl text-cyan-400 font-mono mb-4">Polyglot Engineer</p>
+            <p className="text-xl text-primary font-mono mb-4">Polyglot Engineer</p>
 
-<div className="flex flex-wrap gap-4 text-sm text-zinc-400 mb-6">
+            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
                 <span>Jakarta, Indonesia</span>
               </div>
-              <a href="mailto:rivaldiekaputr@gmail.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+              <a href="mailto:rivaldiekaputr@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
                 <span>rivaldiekaputr@gmail.com</span>
               </a>
-              <a href="https://wa.me/62895616181056" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-green-400 transition-colors">
+              <a href="https://wa.me/62895616181056" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-green-500 transition-colors">
                 <Phone className="w-4 h-4" />
                 <span>+62 895 616 181056</span>
               </a>
             </div>
 
-            <p className="text-zinc-300 leading-relaxed mb-6">
+            <p className="text-foreground/80 leading-relaxed mb-6">
               I&apos;m a Future Developer with expertise at the intersection of{" "}
-              <span className="text-cyan-400">AI</span>,{" "}
-              <span className="text-amber-400">IoT</span>, and{" "}
-              <span className="text-indigo-400">Web Development</span>.
+              <span className="text-primary">AI</span>,{" "}
+              <span className="text-amber-500">IoT</span>, and{" "}
+              <span className="text-indigo-500">Web Development</span>.
               I specialize in building intelligent systems that solve real-world problems.
               With a strong foundation in both hardware and software, I bring a unique
               perspective to every project I work on.
@@ -72,12 +72,12 @@ export default function AboutPage() {
               <Badge variant="web">Web Development</Badge>
             </div>
 
-<div className="flex gap-4">
+            <div className="flex gap-4">
               <a
                 href="https://instagram.com/rivaldiekaptr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-white transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -85,7 +85,7 @@ export default function AboutPage() {
                 href="https://www.linkedin.com/in/rivaldiekaputr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-white transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -93,11 +93,11 @@ export default function AboutPage() {
                 href="https://wa.me/62895616181056"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-white transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Phone className="w-5 h-5" />
               </a>
-              <Button asChild className="bg-cyan-500 hover:bg-cyan-600 text-black ml-auto">
+              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground ml-auto">
                 <Link href="/resume">
                   <Download className="w-4 h-4 mr-2" />
                   View Resume
@@ -110,9 +110,9 @@ export default function AboutPage() {
         <section className="mt-16">
           <h2 className="text-2xl font-bold mb-6">Skills & Expertise</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="bg-zinc-900/80 border-zinc-800">
+            <Card className="bg-card border-border">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 text-cyan-400">AI / Machine Learning</h3>
+                <h3 className="text-lg font-semibold mb-4 text-primary">AI / Machine Learning</h3>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="outline">Python</Badge>
                   <Badge variant="outline">TensorFlow</Badge>
@@ -124,9 +124,9 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-zinc-900/80 border-zinc-800">
+            <Card className="bg-card border-border">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 text-amber-400">IoT / Embedded</h3>
+                <h3 className="text-lg font-semibold mb-4 text-amber-500">IoT / Embedded</h3>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="outline">ESP32</Badge>
                   <Badge variant="outline">Arduino</Badge>
@@ -138,9 +138,9 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-zinc-900/80 border-zinc-800">
+            <Card className="bg-card border-border">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 text-indigo-400">Web Development</h3>
+                <h3 className="text-lg font-semibold mb-4 text-indigo-500">Web Development</h3>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="outline">Next.js</Badge>
                   <Badge variant="outline">TypeScript</Badge>
@@ -156,20 +156,20 @@ export default function AboutPage() {
 
         <section className="mt-16">
           <h2 className="text-2xl font-bold mb-6">Experience</h2>
-          <Card className="bg-zinc-900/80 border-zinc-800">
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold">Full Stack Developer</h3>
-                  <p className="text-cyan-400 text-sm">Tech Company • 2023 - Present</p>
-                  <p className="text-zinc-400 mt-2">
+                  <p className="text-primary text-sm">Tech Company • 2023 - Present</p>
+                  <p className="text-muted-foreground mt-2">
                     Building AI-powered web applications and IoT solutions for enterprise clients.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">Software Engineer</h3>
-                  <p className="text-cyan-400 text-sm">Startup • 2021 - 2023</p>
-                  <p className="text-zinc-400 mt-2">
+                  <p className="text-primary text-sm">Startup • 2021 - 2023</p>
+                  <p className="text-muted-foreground mt-2">
                     Developed scalable web applications and learned the fundamentals of machine learning.
                   </p>
                 </div>
@@ -179,28 +179,28 @@ export default function AboutPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold mb-6">Organizational Experience</h2>
-          <Card className="bg-zinc-900/80 border-zinc-800">
+          <h2 className="text-2xl font-bold mb-6">Organizational experience</h2>
+          <Card className="bg-card border-border">
             <CardContent className="p-6">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold">Head of Technology</h3>
-                  <p className="text-amber-400 text-sm">Google Developer Student Clubs • 2023 - Present</p>
-                  <p className="text-zinc-400 mt-2">
+                  <p className="text-amber-500 text-sm">Google Developer Student Clubs • 2023 - Present</p>
+                  <p className="text-muted-foreground mt-2">
                     Leading technical initiatives and organizing workshops for students to learn modern web technologies.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">IoT Researcher</h3>
-                  <p className="text-amber-400 text-sm">Research Institute • 2022 - Present</p>
-                  <p className="text-zinc-400 mt-2">
+                  <p className="text-amber-500 text-sm">Research Institute • 2022 - Present</p>
+                  <p className="text-muted-foreground mt-2">
                     Conducting research on IoT systems and publishing papers on smart home automation.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">Volunteer</h3>
-                  <p className="text-amber-400 text-sm">Tech Community Events • 2021 - Present</p>
-                  <p className="text-zinc-400 mt-2">
+                  <p className="text-amber-500 text-sm">Tech Community Events • 2021 - Present</p>
+                  <p className="text-muted-foreground mt-2">
                     Organizing and volunteering at technology conferences and hackathons.
                   </p>
                 </div>

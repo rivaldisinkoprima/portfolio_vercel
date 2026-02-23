@@ -29,7 +29,7 @@ export function AIDemo() {
   };
 
   return (
-    <Card className="mt-6 bg-zinc-900 border-zinc-800">
+    <Card className="mt-6 bg-card border-border">
       <CardContent className="p-4">
         <h4 className="font-mono text-sm text-muted-foreground mb-4 flex items-center gap-2">
           <Bot className="w-4 h-4" />
@@ -39,7 +39,7 @@ export function AIDemo() {
           placeholder="Ask a technical question..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="min-h-[80px] bg-zinc-800 border-zinc-700 font-mono text-sm"
+          className="min-h-[80px] bg-muted border-input font-mono text-sm"
         />
         <Button
           className="w-full mt-3"
@@ -59,8 +59,8 @@ export function AIDemo() {
           )}
         </Button>
         {response && (
-          <div className="mt-4 p-3 rounded-lg bg-zinc-800/50 border border-zinc-700">
-            <p className="text-sm text-cyan-400 font-mono">{response}</p>
+          <div className="mt-4 p-3 rounded-lg bg-muted border border-border">
+            <p className="text-sm text-primary font-mono">{response}</p>
           </div>
         )}
       </CardContent>
