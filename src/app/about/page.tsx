@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Pelajari lebih lanjut tentang latar belakang, skills, dan pengalaman saya.",
 };
 
+export const revalidate = 3600;
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">

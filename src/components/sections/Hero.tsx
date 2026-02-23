@@ -100,12 +100,14 @@ export function Hero() {
             <div className="relative w-full aspect-square mx-auto">
               <div className="relative w-full h-full rounded-full border-[1px] border-zinc-800/80 p-2 overflow-hidden bg-zinc-900/30 backdrop-blur-md shadow-2xl">
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900">
-                  <Image
+<Image
                     src="/profile.jpg"
                     alt="Rivaldi Eka Putra"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover scale-105 hover:scale-100 transition-transform duration-700"
                     priority
+                    quality={80}
                   />
                 </div>
               </div>

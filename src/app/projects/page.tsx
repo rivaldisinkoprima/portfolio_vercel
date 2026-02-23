@@ -15,6 +15,8 @@ export const metadata = {
   description: "Explore my projects in AI, IoT, and Web Development.",
 };
 
+export const revalidate = 3600;
+
 export default function ProjectsPage() {
   const projects = getAllProjects();
 
