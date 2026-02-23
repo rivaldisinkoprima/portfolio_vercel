@@ -107,6 +107,18 @@ export default function RootLayout({
   return (
 <html lang="en" className="dark">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var stored = localStorage.getItem('theme');
+                var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.classList.remove('dark', 'light');
+                document.documentElement.classList.add(theme);
+              })();
+            `,
+          }}
+        />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#22d3ee" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

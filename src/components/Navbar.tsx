@@ -23,6 +23,11 @@ function useHydrated() {
   );
 }
 
+function getSystemTheme(): "dark" | "light" {
+  if (typeof window === "undefined") return "dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +38,35 @@ export function Navbar() {
     const stored = localStorage.getItem("theme") as "dark" | "light" | null;
     if (stored) {
       setTheme(stored);
+    } else {
+      const systemTheme = getSystemTheme();
+      setTheme(systemTheme);
     }
+  }, []);
+
+  useEffect(() => {
+    if (hydrated) {
+      const stored = localStorage.getItem("theme") as "dark" | "light" | null;
+      const initialTheme = stored || getSystemTheme();
+      document.documentElement.classList.remove("dark", "light");
+      document.documentElement.classList.add(initialTheme);
+    }
+  }, [hydrated]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      const stored = localStorage.getItem("theme");
+      if (!stored) {
+        const newTheme = e.matches ? "dark" : "light";
+        setTheme(newTheme);
+        document.documentElement.classList.remove("dark", "light");
+        document.documentElement.classList.add(newTheme);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   const toggleTheme = () => {
