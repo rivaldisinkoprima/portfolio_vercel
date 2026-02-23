@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/ui/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { HitCounter } from "@/components/HitCounter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -165,6 +166,9 @@ export default function RootLayout({
           <main className="pt-16">
             {children}
           </main>
+          <footer className="py-8 text-center">
+            <HitCounter />
+          </footer>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
