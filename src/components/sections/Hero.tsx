@@ -1,13 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 
 export function Hero() {
+  const socials = [
+    { icon: Instagram, href: "https://instagram.com/rivaldiekaptr" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/rivaldiekaputr/" },
+    { icon: Mail, href: "mailto:rivaldiekaputr@gmail.com" },
+  ];
+
   return (
     <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center relative overflow-hidden w-full py-12 md:py-0">
       {/* Background Effects */}
@@ -71,11 +77,7 @@ export function Hero() {
               </div>
 
               <div className="flex gap-6 mt-10 justify-center md:justify-start items-center">
-                {[
-                  { icon: Github, href: "https://github.com" },
-                  { icon: Linkedin, href: "https://www.linkedin.com/in/rivaldiekaputr/" },
-                  { icon: Mail, href: "mailto:hello@example.com" },
-                ].map((social, index) => (
+{socials.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}

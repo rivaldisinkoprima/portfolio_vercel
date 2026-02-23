@@ -99,10 +99,11 @@ export default function RootLayout({
               url: "https://www.valporto.my.id",
               jobTitle: "Full Stack Developer",
               description: "Full Stack Developer specializing in AI, IoT, and Web Development",
-              sameAs: [
-                "https://github.com",
+sameAs: [
+                "https://instagram.com/rivaldiekaptr",
                 "https://www.linkedin.com/in/rivaldiekaputr/",
-                "mailto:hello@example.com"
+                "mailto:rivaldiekaputr@gmail.com",
+                "https://wa.me/62895616181056"
               ],
               worksFor: {
                 "@type": "Organization",

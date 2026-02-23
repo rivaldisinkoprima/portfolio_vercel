@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin, Send, Award, X } from "lucide-react";
+import { Mail, Instagram, Linkedin, Send, Award, X, Phone } from "lucide-react";
 import Image from "next/image";
 import { Certificate } from "@/lib/certificates";
 
@@ -130,24 +130,29 @@ export function Contact({ serverCertificates }: ContactProps) {
             <p className="text-zinc-400 mb-6 max-w-md mx-auto">
               I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
-            <div className="flex justify-center gap-4">
+<div className="flex justify-center gap-4">
               <Button variant="outline" size="icon" asChild>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                  <Github className="w-5 h-5" />
+                <a href="https://instagram.com/rivaldiekaptr" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="w-5 h-5" />
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/rivaldiekaputr/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="mailto:hello@example.com">
+                <a href="mailto:rivaldiekaputr@gmail.com">
                   <Mail className="w-5 h-5" />
                 </a>
               </Button>
+              <Button variant="outline" size="icon" asChild>
+                <a href="https://wa.me/62895616181056" target="_blank" rel="noopener noreferrer">
+                  <Phone className="w-5 h-5" />
+                </a>
+              </Button>
               <Button className="bg-cyan-500 hover:bg-cyan-600 text-black" asChild>
-                <a href="mailto:hello@example.com">
+                <a href="mailto:rivaldiekaputr@gmail.com">
                   <Send className="w-4 h-4 mr-2" />
                   Get in Touch
                 </a>

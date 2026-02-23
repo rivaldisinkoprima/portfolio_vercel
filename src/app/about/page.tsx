@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Download, MapPin, Mail, Github, Linkedin } from "lucide-react";
+import { ArrowLeft, Download, MapPin, Mail, Instagram, Linkedin, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -41,15 +41,19 @@ export default function AboutPage() {
             <h1 className="text-4xl font-bold mb-2">Rivaldi Eka Putra</h1>
             <p className="text-xl text-cyan-400 font-mono mb-4">Polyglot Engineer</p>
 
-            <div className="flex flex-wrap gap-4 text-sm text-zinc-400 mb-6">
+<div className="flex flex-wrap gap-4 text-sm text-zinc-400 mb-6">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
                 <span>Jakarta, Indonesia</span>
               </div>
-              <div className="flex items-center gap-2">
+              <a href="mailto:rivaldiekaputr@gmail.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
                 <Mail className="w-4 h-4" />
-                <span>hello@example.com</span>
-              </div>
+                <span>rivaldiekaputr@gmail.com</span>
+              </a>
+              <a href="https://wa.me/62895616181056" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-green-400 transition-colors">
+                <Phone className="w-4 h-4" />
+                <span>+62 895 616 181056</span>
+              </a>
             </div>
 
             <p className="text-zinc-300 leading-relaxed mb-6">
@@ -68,22 +72,30 @@ export default function AboutPage() {
               <Badge variant="web">Web Development</Badge>
             </div>
 
-            <div className="flex gap-4">
+<div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://instagram.com/rivaldiekaptr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors"
               >
-                <Github className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
               </a>
-<a
+              <a
                 href="https://www.linkedin.com/in/rivaldiekaputr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://wa.me/62895616181056"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-400 hover:text-white transition-colors"
+              >
+                <Phone className="w-5 h-5" />
               </a>
               <Button asChild className="bg-cyan-500 hover:bg-cyan-600 text-black ml-auto">
                 <Link href="/resume">
