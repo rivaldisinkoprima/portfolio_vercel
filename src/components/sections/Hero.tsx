@@ -104,7 +104,7 @@ export function Hero() {
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900">
 <Image
                     src="/profile.jpg"
-                    alt="Rivaldi Eka Putra"
+                    alt="Rivaldi Eka Putra - Full Stack Developer specializing in AI, IoT, and Web Development"
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover scale-105 hover:scale-100 transition-transform duration-700"

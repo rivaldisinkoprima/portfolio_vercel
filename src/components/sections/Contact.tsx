@@ -103,7 +103,7 @@ export function Contact({ serverCertificates }: ContactProps) {
                   >
                     <Image
                       src={cert.src}
-                      alt={`Certificate ${cert.id}`}
+                      alt={`Certificate ${cert.id} - Professional Certification`}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
@@ -191,7 +191,7 @@ export function Contact({ serverCertificates }: ContactProps) {
             >
               <Image
                 src={certificates[lightboxIndex].src}
-                alt={`Certificate ${certificates[lightboxIndex].id}`}
+                alt={`Certificate ${certificates[lightboxIndex].id} - Professional Certification Full View`}
                 width={1200}
                 height={900}
                 className="w-full h-auto max-h-[90vh] object-contain rounded-lg"

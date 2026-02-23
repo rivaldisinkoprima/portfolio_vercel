@@ -50,7 +50,7 @@ export default function ResumePage() {
               <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-zinc-700">
                 <Image
                   src="/resume1.jpg"
-                  alt="Resume Page 1"
+                  alt="Resume Page 1 - Rivaldi Eka Putra Professional Experience"
                   fill
                   className="object-contain"
                 />
@@ -67,7 +67,7 @@ export default function ResumePage() {
               <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-zinc-700">
                 <Image
                   src="/resume2.jpg"
-                  alt="Resume Page 2"
+                  alt="Resume Page 2 - Rivaldi Eka Putra Skills and Education"
                   fill
                   className="object-contain"
                 />

@@ -1,95 +1,250 @@
+"use client";
+
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Instagram, Linkedin, Mail, Send, Phone } from "lucide-react";
-
-export const metadata = {
-  title: "Contact | Polyglot Engineer Portfolio",
-  description: "Get in touch for collaborations and opportunities.",
-};
+import {
+  Instagram,
+  Linkedin,
+  Mail,
+  Send,
+  Phone,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function ContactPage() {
+  const [formState, setFormState] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState("loading");
+
+    try {
+      const response = await fetch("https://formspree.io/f/xlgwodla", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setFormState("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setFormState("error");
+      }
+    } catch {
+      setFormState("error");
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <main className="min-h-screen bg-background">
       <div className="max-w-2xl mx-auto px-6 py-12">
         <header className="mb-12">
           <h1 className="text-4xl font-bold mb-4">Get in Touch</h1>
           <p className="text-zinc-400">
-            Have a project in mind or want to collaborate? Feel free to reach out!
+            Have a project in mind or want to collaborate? Feel free to reach
+            out!
           </p>
         </header>
 
-<Card className="bg-zinc-900/80 border-zinc-800">
+        <Card className="bg-zinc-900/80 border-zinc-800 mb-8">
           <CardContent className="p-8">
-            <div className="space-y-6">
-              <a
-                href="mailto:rivaldiekaputr@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-cyan-400" />
-                </div>
+            {formState === "success" ? (
+              <div className="text-center py-8">
+                <CheckCircle2 className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
+                <p className="text-zinc-400 mb-6">
+                  Thank you for reaching out. I&apos;ll get back to you as soon
+                  as possible.
+                </p>
+                <Button onClick={() => setFormState("idle")} variant="outline">
+                  Send Another Message
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <p className="font-semibold">Email</p>
-                  <p className="text-sm text-zinc-400">rivaldiekaputr@gmail.com</p>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+                    placeholder="Your name"
+                  />
                 </div>
-              </a>
 
-              <a
-                href="https://instagram.com/rivaldiekaptr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
-                  <Instagram className="w-6 h-6 text-pink-400" />
-                </div>
                 <div>
-                  <p className="font-semibold">Instagram</p>
-                  <p className="text-sm text-zinc-400">@rivaldiekaptr</p>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
                 </div>
-              </a>
 
-              <a
-                href="https://www.linkedin.com/in/rivaldiekaputr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-                  <Linkedin className="w-6 h-6 text-blue-400" />
-                </div>
                 <div>
-                  <p className="font-semibold">LinkedIn</p>
-                  <p className="text-sm text-zinc-400">linkedin.com/in/rivaldiekaputr</p>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent resize-none"
+                    placeholder="Your message..."
+                  />
                 </div>
-              </a>
 
-              <a
-                href="https://wa.me/62895616181056"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <p className="font-semibold">WhatsApp</p>
-                  <p className="text-sm text-zinc-400">+62 895 616 181056</p>
-                </div>
-              </a>
-            </div>
+                {formState === "error" && (
+                  <div className="flex items-center gap-2 text-red-400 text-sm">
+                    <AlertCircle className="w-4 h-4" />
+                    <span>
+                      Something went wrong. Please try again or email me
+                      directly.
+                    </span>
+                  </div>
+                )}
 
-            <div className="mt-8 pt-8 border-t border-zinc-800">
-              <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-black" asChild>
-                <a href="mailto:rivaldiekaputr@gmail.com">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Me a Message
-                </a>
-              </Button>
-            </div>
+                <Button
+                  type="submit"
+                  disabled={formState === "loading"}
+                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-black disabled:opacity-50"
+                >
+                  {formState === "loading" ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            )}
           </CardContent>
         </Card>
+
+        <div className="space-y-6">
+          <h2 className="text-xl font-semibold">Other Ways to Reach Me</h2>
+          <div className="grid gap-4">
+            <a
+              href="mailto:rivaldiekaputr@gmail.com"
+              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                <Mail className="w-6 h-6 text-cyan-400" />
+              </div>
+              <div>
+                <p className="font-semibold">Email</p>
+                <p className="text-sm text-zinc-400">
+                  rivaldiekaputr@gmail.com
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://instagram.com/rivaldiekaptr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
+                <Instagram className="w-6 h-6 text-pink-400" />
+              </div>
+              <div>
+                <p className="font-semibold">Instagram</p>
+                <p className="text-sm text-zinc-400">@rivaldiekaptr</p>
+              </div>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/rivaldiekaputr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Linkedin className="w-6 h-6 text-blue-400" />
+              </div>
+              <div>
+                <p className="font-semibold">LinkedIn</p>
+                <p className="text-sm text-zinc-400">
+                  linkedin.com/in/rivaldiekaputr
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://wa.me/62895616181056"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
+                <Phone className="w-6 h-6 text-green-400" />
+              </div>
+              <div>
+                <p className="font-semibold">WhatsApp</p>
+                <p className="text-sm text-zinc-400">+62 895 616 181056</p>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </main>
   );

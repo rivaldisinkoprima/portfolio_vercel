@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     canonical: "https://www.valporto.my.id",
     languages: {
       en: "https://www.valporto.my.id",
+      id: "https://www.valporto.my.id",
     },
   },
   title: {
@@ -36,36 +37,45 @@ export const metadata: Metadata = {
     "portfolio",
     "full stack developer",
     "AI developer",
-    "IoT",
+    "IoT developer",
     "web developer",
     "software engineer",
     "polyglot engineer",
+    "Jakarta",
+    "Indonesia",
   ],
   authors: [{ name: "Rivaldi Eka Putra" }],
   creator: "Rivaldi Eka Putra",
   publisher: "Rivaldi Eka Putra",
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: "id_ID",
     url: "https://www.valporto.my.id",
     siteName: "Rivaldi Eka Putra Portfolio",
     title: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Developer",
     description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
     images: [
       {
-        url: "/profile.jpg",
+        url: "/og-image.png",
         width: 1200,
-        height: 1200,
-        alt: "Rivaldi Eka Putra - Full Stack Developer",
+        height: 630,
+        alt: "Rivaldi Eka Putra - Full Stack Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rivaldi Eka Putra | Portfolio",
-    description: "Full Stack Developer - AI, IoT & Web Development",
-    images: ["/profile.jpg"],
-    creator: "@rivaldi",
+    title: "Rivaldi Eka Putra | Polyglot Engineer",
+    description: "Full Stack Developer - AI, IoT & Web Development | Jakarta, Indonesia",
+    images: ["/og-image.png"],
+    creator: "@rivaldiekaptr",
+    site: "@rivaldiekaptr",
   },
   robots: {
     index: true,
@@ -78,6 +88,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "google7937478b8e105b70",
+  },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 
@@ -87,8 +104,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+<html lang="en" className="dark">
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#22d3ee" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -97,19 +119,26 @@ export default function RootLayout({
               "@type": "Person",
               name: "Rivaldi Eka Putra",
               url: "https://www.valporto.my.id",
+              image: "https://www.valporto.my.id/profile.jpg",
               jobTitle: "Full Stack Developer",
-              description: "Full Stack Developer specializing in AI, IoT, and Web Development",
-sameAs: [
+              description: "Full Stack Developer specializing in AI, IoT, and Web Development based in Jakarta, Indonesia",
+              email: "rivaldiekaputr@gmail.com",
+              telephone: "+62895616181056",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Jakarta",
+                addressCountry: "ID"
+              },
+              sameAs: [
                 "https://instagram.com/rivaldiekaptr",
                 "https://www.linkedin.com/in/rivaldiekaputr/",
-                "mailto:rivaldiekaputr@gmail.com",
                 "https://wa.me/62895616181056"
               ],
               worksFor: {
                 "@type": "Organization",
                 name: "Freelance"
               },
-              knowsAbout: ["AI", "IoT", "Web Development", "Full Stack Development"]
+              knowsAbout: ["AI", "Machine Learning", "IoT", "Web Development", "Full Stack Development", "Next.js", "Python", "ESP32"]
             })
           }}
         />
