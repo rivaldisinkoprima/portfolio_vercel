@@ -94,8 +94,12 @@ export const metadata: Metadata = {
     google: "google7937478b8e105b70",
   },
   icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
   },
 };
 
@@ -106,7 +110,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<html lang="en" className="dark">
+<html lang="en">
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -114,7 +118,6 @@ export default function RootLayout({
               (function() {
                 var stored = localStorage.getItem('theme');
                 var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.classList.remove('dark', 'light');
                 document.documentElement.classList.add(theme);
               })();
             `,
