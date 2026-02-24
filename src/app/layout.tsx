@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     },
   },
   title: {
-    default: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Developer",
+    default: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Dev",
     template: "%s | Rivaldi Eka Putra",
   },
-  description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Lihat proyek, skills, dan kontak profesional.",
+  description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Lihat proyek, skills, pengalaman, dan kontak profesional.",
   keywords: [
     "Rivaldi Eka Putra",
     "portfolio",
