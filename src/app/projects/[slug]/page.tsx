@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { SlideUp, FadeIn } from "@/components/AnimateOnScroll";
 
 const categoryColors = {
   AI: "ai",
@@ -48,40 +49,46 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <main className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <Link href="/projects">
-          <Button variant="ghost" className="mb-8">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Projects
-          </Button>
-        </Link>
+        <SlideUp>
+          <Link href="/projects">
+            <Button variant="ghost" className="mb-8">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Projects
+            </Button>
+          </Link>
+        </SlideUp>
 
         <article>
-          <header className="mb-8">
-            <Badge variant={categoryColors[project.category]} className="mb-4">
-              {project.category}
-            </Badge>
-            <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-            <p className="text-xl text-muted-foreground mb-6">{project.description}</p>
-            
-            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{project.date}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Tag className="w-4 h-4" />
-                <div className="flex gap-2">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="text-muted-foreground">#{tag}</span>
-                  ))}
+          <SlideUp delay={0.1}>
+            <header className="mb-8">
+              <Badge variant={categoryColors[project.category]} className="mb-4">
+                {project.category}
+              </Badge>
+              <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+              <p className="text-xl text-muted-foreground mb-6">{project.description}</p>
+              
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{project.date}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Tag className="w-4 h-4" />
+                  <div className="flex gap-2">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="text-muted-foreground">#{tag}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </header>
+            </header>
+          </SlideUp>
 
-          <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary prose-a:text-primary">
-            <ReactMarkdown>{project.content}</ReactMarkdown>
-          </div>
+          <FadeIn delay={0.2}>
+            <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary prose-a:text-primary">
+              <ReactMarkdown>{project.content}</ReactMarkdown>
+            </div>
+          </FadeIn>
         </article>
       </div>
     </main>
