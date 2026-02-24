@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Rivaldi Eka Putra - Full Stack Developer Portfolio",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rivaldi Eka Putra | Polyglot Engineer",
     description: "Full Stack Developer - AI, IoT & Web Development | Jakarta, Indonesia",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
     creator: "@rivaldiekaptr",
     site: "@rivaldiekaptr",
   },
@@ -135,7 +135,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Rivaldi Eka Putra",
               url: "https://www.valporto.my.id",
-              image: "https://www.valporto.my.id/profile.jpg",
+              image: "https://www.valporto.my.id/og-image.svg",
               jobTitle: "Full Stack Developer",
               description: "Full Stack Developer specializing in AI, IoT, and Web Development based in Jakarta, Indonesia",
               email: "rivaldiekaputr@gmail.com",

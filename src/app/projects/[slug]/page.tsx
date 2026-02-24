@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { SlideUp, FadeIn } from "@/components/AnimateOnScroll";
+import { Metadata } from "next";
 
 const categoryColors = {
   AI: "ai",
@@ -24,7 +25,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: ProjectPageProps) {
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   
@@ -35,6 +36,29 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   return {
     title: `${project.title} | Polyglot Engineer Portfolio`,
     description: project.description,
+    openGraph: {
+      title: `${project.title} | Rivaldi Eka Putra`,
+      description: project.description,
+      url: `https://www.valporto.my.id/projects/${slug}`,
+      type: "article",
+      publishedTime: project.date,
+      authors: ["Rivaldi Eka Putra"],
+      tags: project.tags,
+      images: [
+        {
+          url: "/og-image.svg",
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Rivaldi Eka Putra`,
+      description: project.description,
+      images: ["/og-image.svg"],
+    },
   };
 }
 
