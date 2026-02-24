@@ -19,7 +19,7 @@ export default function Loading() {
                 <Skeleton className="w-5 h-5" />
                 <Skeleton className="w-20 h-6" />
               </div>
-              <Skeleton className="w-full aspect-[8.5/11]" />
+              <Skeleton className="w-full aspect-8.5/11" />
             </div>
           ))}
         </div>

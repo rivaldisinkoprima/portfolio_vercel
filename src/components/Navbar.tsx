@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useSyncExternalStore } from "react";
+import { useState, useEffect, useLayoutEffect, useSyncExternalStore } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,66 +23,27 @@ function useHydrated() {
   );
 }
 
-function getSystemTheme(): "dark" | "light" {
-  if (typeof window === "undefined") return "dark";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const hydrated = useHydrated();
 
-  useEffect(() => {
-    const stored = localStorage.getItem("theme") as "dark" | "light" | null;
-    if (stored) {
-      setTheme(stored);
-    } else {
-      const systemTheme = getSystemTheme();
-      setTheme(systemTheme);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (hydrated) {
-      const stored = localStorage.getItem("theme") as "dark" | "light" | null;
-      const initialTheme = stored || getSystemTheme();
-      document.documentElement.classList.remove("dark", "light");
-      document.documentElement.classList.add(initialTheme);
-    }
-  }, [hydrated]);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = (e: MediaQueryListEvent) => {
-      const stored = localStorage.getItem("theme");
-      if (!stored) {
-        const newTheme = e.matches ? "dark" : "light";
-        setTheme(newTheme);
-        document.documentElement.classList.remove("dark", "light");
-        document.documentElement.classList.add(newTheme);
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+  useLayoutEffect(() => {
+    const stored = localStorage.getItem("theme");
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = (stored as "dark" | "light") || (systemDark ? "dark" : "light");
+    setTheme(initialTheme);
     document.documentElement.classList.remove("dark", "light");
-    document.documentElement.classList.add(newTheme);
-  };
+    document.documentElement.classList.add(initialTheme);
+  }, []);
 
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
+  useLayoutEffect(() => {
+    if (pathname) {
+      setIsOpen(false);
+    }
   }, [pathname]);
 
-  // Prevent scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -94,13 +55,21 @@ export function Navbar() {
     };
   }, [isOpen]);
 
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(newTheme);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6">
         <nav className="flex items-center justify-between h-16">
           <Link href="/" className="text-xl font-bold tracking-tight relative z-50">
             <span className="text-foreground">Rivaldi Eka Putra</span>
-            <span className="text-cyan-400">.</span>
+            <span className="text-primary">.</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -110,9 +79,9 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-cyan-400 relative py-1",
+                  "text-sm font-medium transition-colors hover:text-primary relative py-1",
                   pathname === item.href
-                    ? "text-cyan-400"
+                    ? "text-primary"
                     : "text-muted-foreground"
                 )}
               >
@@ -120,14 +89,13 @@ export function Navbar() {
                 {pathname === item.href && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute left-0 right-0 -bottom-[21px] h-0.5 bg-cyan-400"
+                    className="absolute left-0 right-0 -bottom-[21px] h-0.5 bg-primary"
                     initial={false}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
               </Link>
             ))}
-            {/* Theme Toggle */}
             {hydrated && (
               <button
                 onClick={toggleTheme}
@@ -191,7 +159,7 @@ export function Navbar() {
                     href={item.href}
                     className={cn(
                       "block text-2xl font-semibold tracking-tight transition-colors",
-                      pathname === item.href ? "text-cyan-400" : "text-muted-foreground hover:text-foreground"
+                      pathname === item.href ? "text-primary" : "text-muted-foreground hover:text-foreground"
                     )}
                   >
                     {item.label}

@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { createClient } from "@vercel/kv";
 
 export const runtime = "edge";
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const kv = createClient({
       url: process.env.KV_REST_API_URL!,

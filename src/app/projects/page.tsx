@@ -3,7 +3,7 @@ import { getAllProjects } from "@/lib/projects";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar } from "lucide-react";
-import { SlideUp, FadeIn } from "@/components/AnimateOnScroll";
+import { SlideUp } from "@/components/AnimateOnScroll";
 
 const categoryColors = {
   AI: "ai",

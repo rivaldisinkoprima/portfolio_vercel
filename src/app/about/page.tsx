@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Download, MapPin, Mail, Instagram, Linkedin, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { SlideUp, FadeIn, SlideLeft } from "@/components/AnimateOnScroll";
+import { SlideUp, SlideLeft } from "@/components/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "About | Rivaldi Eka Putra - Polyglot Engineer",

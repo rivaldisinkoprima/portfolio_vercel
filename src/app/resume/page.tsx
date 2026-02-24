@@ -57,7 +57,7 @@ export default function ResumePage() {
                   <FileText className="w-5 h-5 text-primary" />
                   <h2 className="text-xl font-semibold">Page 1</h2>
                 </div>
-                <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-border">
+                <div className="relative w-full aspect-8.5/11 rounded-lg overflow-hidden border border-border">
                   <Image
                     src="/resume1.jpg"
                     alt="Resume Page 1 - Rivaldi Eka Putra Professional Experience"
@@ -76,7 +76,7 @@ export default function ResumePage() {
                   <FileText className="w-5 h-5 text-primary" />
                   <h2 className="text-xl font-semibold">Page 2</h2>
                 </div>
-                <div className="relative w-full aspect-[8.5/11] rounded-lg overflow-hidden border border-border">
+                <div className="relative w-full aspect-8.5/11 rounded-lg overflow-hidden border border-border">
                   <Image
                     src="/resume2.jpg"
                     alt="Resume Page 2 - Rivaldi Eka Putra Skills and Education"
