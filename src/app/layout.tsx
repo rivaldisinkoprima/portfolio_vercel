@@ -32,7 +32,8 @@ export const metadata: Metadata = {
     default: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Dev",
     template: "%s | Rivaldi Eka Putra",
   },
-  description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Lihat proyek, skills, pengalaman, dan kontak profesional.",
+  description:
+    "Portfolio Rivaldi Eka Putra - Full Stack Developer specializing AI, IoT, dan Web Development. Lihat proyek, skills, pengalaman, dan kontak profesional.",
   keywords: [
     "Rivaldi Eka Putra",
     "portfolio",
@@ -60,7 +61,8 @@ export const metadata: Metadata = {
     url: "https://www.valporto.my.id",
     siteName: "Rivaldi Eka Putra Portfolio",
     title: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT & Web Developer",
-    description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
+    description:
+      "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
     images: [
       {
         url: "/og-image.svg",
@@ -73,7 +75,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Rivaldi Eka Putra | Polyglot Engineer",
-    description: "Full Stack Developer - AI, IoT & Web Development | Jakarta, Indonesia",
+    description:
+      "Full Stack Developer - AI, IoT & Web Development | Jakarta, Indonesia",
     images: ["/og-image.svg"],
     creator: "@rivaldiekaptr",
     site: "@rivaldiekaptr",
@@ -93,15 +96,10 @@ export const metadata: Metadata = {
     google: "google7937478b8e105b70",
   },
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    apple: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
 };
-
 
 export default function RootLayout({
   children,
@@ -109,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<html lang="en" className="light">
+    <html lang="en" className="light">
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -125,7 +123,10 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#22d3ee" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <link rel="apple-touch-icon" href="/icon.svg" />
         <script
           type="application/ld+json"
@@ -137,39 +138,47 @@ export default function RootLayout({
               url: "https://www.valporto.my.id",
               image: "https://www.valporto.my.id/og-image.svg",
               jobTitle: "Full Stack Developer",
-              description: "Full Stack Developer specializing in AI, IoT, and Web Development based in Jakarta, Indonesia",
+              description:
+                "Full Stack Developer specializing in AI, IoT, and Web Development based in Jakarta, Indonesia",
               email: "rivaldiekaputr@gmail.com",
               telephone: "+62895616181056",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Jakarta",
-                addressCountry: "ID"
+                addressCountry: "ID",
               },
               sameAs: [
                 "https://instagram.com/rivaldiekaptr",
                 "https://www.linkedin.com/in/rivaldiekaputr/",
-                "https://wa.me/62895616181056"
+                "https://wa.me/62895616181056",
               ],
               worksFor: {
                 "@type": "Organization",
-                name: "Freelance"
+                name: "Freelance",
               },
-              knowsAbout: ["AI", "Machine Learning", "IoT", "Web Development", "Full Stack Development", "Next.js", "Python", "ESP32"]
-            })
+              knowsAbout: [
+                "AI",
+                "Machine Learning",
+                "IoT",
+                "Web Development",
+                "Full Stack Development",
+                "Next.js",
+                "Python",
+                "ESP32",
+              ],
+            }),
           }}
         />
       </head>
-<body
+      <body
         className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
-          <SmoothScroll />
-          <Navbar />
-          <main className="pt-16">
-            {children}
-          </main>
-          <footer className="py-8 text-center">
-            <HitCounter />
-          </footer>
+        <SmoothScroll />
+        <Navbar />
+        <main className="pt-16">{children}</main>
+        <footer className="py-8 text-center">
+          <HitCounter />
+        </footer>
         <Analytics />
         <SpeedInsights />
       </body>
