@@ -99,6 +99,36 @@ body {
   box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    90deg,
+    var(--muted) 0%,
+    var(--muted-foreground) 50%,
+    var(--muted) 100%
+  );
+  background-size: 200% 100%;
+}
+
+.light .animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--muted) 0%,
+    #d4d4d8 50%,
+    var(--muted) 100%
+  );
+  background-size: 200% 100%;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
