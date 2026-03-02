@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { cache } from "react";
 
 export interface ProjectMeta {
   slug: string;
@@ -26,14 +27,14 @@ function ensureDirectory() {
   return true;
 }
 
-export function getProjectSlugs(): string[] {
+export const getProjectSlugs = cache((): string[] => {
   if (!ensureDirectory()) {
     return [];
   }
   return fs.readdirSync(projectsDirectory).filter((file) => file.endsWith(".mdx"));
-}
+});
 
-export function getProjectBySlug(slug: string): Project | null {
+export const getProjectBySlug = cache((slug: string): Project | null => {
   if (!ensureDirectory()) {
     return null;
   }
@@ -59,9 +60,9 @@ export function getProjectBySlug(slug: string): Project | null {
     featured: data.featured,
     content,
   };
-}
+});
 
-export function getAllProjects(): ProjectMeta[] {
+export const getAllProjects = cache((): ProjectMeta[] => {
   if (!ensureDirectory()) {
     return [];
   }
@@ -79,14 +80,14 @@ export function getAllProjects(): ProjectMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return projects;
-}
+});
 
-export function getProjectsByCategory(category: "AI" | "IoT" | "Web"): ProjectMeta[] {
+export const getProjectsByCategory = cache((category: "AI" | "IoT" | "Web"): ProjectMeta[] => {
   const projects = getAllProjects();
   return projects.filter((project) => project.category === category);
-}
+});
 
-export function getFeaturedProjects(): ProjectMeta[] {
+export const getFeaturedProjects = cache((): ProjectMeta[] => {
   const projects = getAllProjects();
   return projects.filter((project) => project.featured);
-}
+});

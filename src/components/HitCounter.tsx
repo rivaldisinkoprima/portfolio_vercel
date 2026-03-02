@@ -5,35 +5,28 @@ import { Eye } from "lucide-react";
 
 export function HitCounter() {
   const [count, setCount] = useState<number | null>(null);
-  const [hasIncremented, setHasIncremented] = useState(false);
 
   useEffect(() => {
     const incrementCounter = async () => {
-      if (hasIncremented) return;
+      if (sessionStorage.getItem("hit-counted")) {
+        const res = await fetch("/api/hit-counter");
+        const data = await res.json();
+        setCount(data.count);
+        return;
+      }
 
       try {
-        setHasIncremented(true);
         sessionStorage.setItem("hit-counted", "true");
-
-        const response = await fetch("/api/hit-counter", {
-          method: "POST",
-        });
+        const response = await fetch("/api/hit-counter", { method: "POST" });
         const data = await response.json();
         setCount(data.count);
       } catch (error) {
-        console.error("Failed to increment counter:", error);
+        console.error("Failed to fetch counter:", error);
       }
     };
 
-    if (!sessionStorage.getItem("hit-counted")) {
-      incrementCounter();
-    } else {
-      fetch("/api/hit-counter")
-        .then((res) => res.json())
-        .then((data) => setCount(data.count))
-        .catch(console.error);
-    }
-  }, [hasIncremented]);
+    incrementCounter();
+  }, []);
 
   if (count === null) {
     return null;

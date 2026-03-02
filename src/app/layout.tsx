@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/ui/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { HitCounter } from "@/components/HitCounter";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -107,19 +108,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var stored = localStorage.getItem('theme');
-                var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.classList.add(theme);
-              })();
-            `,
-          }}
-        />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#22d3ee" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -173,12 +163,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <SmoothScroll />
-        <Navbar />
-        <main className="pt-16">{children}</main>
-        <footer className="py-8 text-center">
-          <HitCounter />
-        </footer>
+        <ThemeProvider>
+          <SmoothScroll />
+          <Navbar />
+          <main className="pt-16">{children}</main>
+          <footer className="py-8 text-center">
+            <HitCounter />
+          </footer>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
