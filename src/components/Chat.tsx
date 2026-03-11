@@ -99,7 +99,7 @@ export function Chat() {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50",
+          "fixed bottom-4 right-4 sm:bottom-1 sm:right-6 z-50",
           "h-14 w-14 sm:h-[140px] sm:w-[140px]",
           "hover:scale-110 transition-transform duration-200 cursor-pointer",
           isOpen && "hidden",
