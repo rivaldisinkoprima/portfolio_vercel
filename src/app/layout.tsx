@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/ui/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { HitCounter } from "@/components/HitCounter";
+import { Chat } from "@/components/Chat";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
@@ -170,6 +171,7 @@ export default function RootLayout({
           <footer className="py-8 text-center">
             <HitCounter />
           </footer>
+          <Chat />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
