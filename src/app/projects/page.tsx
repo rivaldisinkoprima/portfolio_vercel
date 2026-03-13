@@ -14,7 +14,7 @@ const categoryColors = {
 
 export const metadata = {
   title: "Projects | Polyglot Engineer Portfolio",
-  description: "Explore my projects in AI, IoT, and Web Development.",
+  description: "Explore my projects in AI, IoT, Web, and Mobile Development.",
 };
 
 export const revalidate = 3600;
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
           </SlideUp>
           <SlideUp delay={0.1}>
             <p className="text-muted-foreground max-w-xl">
-              A collection of projects showcasing expertise in AI, IoT, and Web Development.
+              A collection of projects showcasing expertise in AI, IoT, Web, and Mobile Development.
               Each project demonstrates practical problem-solving and technical innovation.
             </p>
           </SlideUp>

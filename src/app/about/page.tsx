@@ -9,10 +9,10 @@ import { SlideUp, SlideLeft } from "@/components/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "About | Rivaldi Eka Putra - Polyglot Engineer",
-  description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Pelajari lebih lanjut tentang latar belakang, skills, dan pengalaman saya.",
+  description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development. Pelajari lebih lanjut tentang latar belakang, skills, dan pengalaman saya.",
   openGraph: {
     title: "About | Rivaldi Eka Putra",
-    description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
+    description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development.",
     url: "https://www.valporto.my.id/about",
     type: "profile",
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About | Rivaldi Eka Putra",
-    description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
+    description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development.",
     images: ["/og-image.svg"],
   },
 };

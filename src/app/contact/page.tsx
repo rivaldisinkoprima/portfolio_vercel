@@ -9,7 +9,7 @@ import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact | Rivaldi Eka Putra - Polyglot Engineer",
-  description: "Hubungi Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development. Kirim pesan, email, atau hubungi via WhatsApp.",
+  description: "Hubungi Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development. Kirim pesan, email, atau hubungi via WhatsApp.",
   openGraph: {
     title: "Contact | Rivaldi Eka Putra",
     description: "Hubungi Rivaldi Eka Putra untuk kolaborasi atau project.",
