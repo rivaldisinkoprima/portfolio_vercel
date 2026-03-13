@@ -17,6 +17,7 @@ const badgeVariants = cva(
         ai: "border-transparent bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
         iot: "border-transparent bg-amber-500/20 text-amber-400 border-amber-500/30",
         web: "border-transparent bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
+        mobile: "border-transparent bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
       },
     },
     defaultVariants: {

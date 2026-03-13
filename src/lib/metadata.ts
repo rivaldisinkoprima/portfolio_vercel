@@ -64,8 +64,8 @@ export function createPageMetadata({
 
 export const siteMetadata = {
   name: "Rivaldi Eka Putra",
-  title: "Polyglot Engineer - AI, IoT & Web Developer",
-  description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, dan Web Development.",
+  title: "Polyglot Engineer - AI, IoT, Web & Mobile Developer",
+  description: "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development.",
   url: SITE_URL,
   email: "rivaldiekaputr@gmail.com",
   phone: "+62895616181056",

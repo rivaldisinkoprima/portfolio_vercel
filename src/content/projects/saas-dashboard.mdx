@@ -1,34 +1,53 @@
 ---
-title: "SaaS Analytics Dashboard"
-description: "A comprehensive analytics platform for SaaS businesses with real-time metrics visualization and reporting."
-category: "Web"
-tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"]
+title: "IoTfy Platform"
+description: "MQTT-based IoT Dashboard for monitoring sensors, controlling devices, and automation. Cross-platform Flutter app."
+category: "Mobile"
+tags: ["Flutter", "Riverpod", "Hive", "MQTT", "IoT"]
 date: "2025-10-05"
+image: "/images/projects/iotfy-platform/1.jpg"
 featured: true
 ---
 
-# SaaS Analytics Dashboard
+# IoTfy Platform
 
-A modern analytics dashboard for SaaS companies to track key performance indicators and user behavior.
+The ultimate MQTT-based IoT Dashboard for professionals and hobbyists. Monitor sensors, control devices, and automate your smart home or industrial projects with a beautiful, real-time, and offline-first interface.
 
-## Overview
+![IoTfy Platform Dashboard](/images/projects/iotfy-platform/1.jpg)
 
-Built with performance in mind, this dashboard provides real-time insights into business metrics.
+## Key Features
+
+### Connectivity & Compatibility
+
+- **Universal MQTT Support**: Connect to any broker (HiveMQ, Mosquitto, EMQX, AWS IoT, Azure)
+- **SSL/TLS Secure Connection**: Enterprise-grade security support (MQTTS)
+- **Multi-Broker Management**: Manage multiple connections and dashboards simultaneously
+
+![IoTfy Platform Widgets](/images/projects/iotfy-platform/2.jpg)
+
+### Rich Visualization
+
+- **Dynamic Widgets**: Sliders, Toggle Switches, Buttons, Real-time Charts, Gauges, Text Displays
+- **Real-time Updates**: Zero latency with optimized MQTT packet handling
+- **Responsive Design**: Works on Mobile (Touch) and Desktop (Mouse)
+
+### Intelligent Automation (Rule Engine)
+
+- **Triggers**: Widget Value (e.g., "If Temp > 30°C"), Schedule (Daily, Weekly, Interval)
+- **Actions**: Notifications, Control Devices (Inter-widget communication), Publish MQTT
+- **Activity Log**: Track every automation event
+
+![IoTfy Platform Automation](/images/projects/iotfy-platform/3.jpg)
+
+### Premium User Experience
+
+- **Dark/Light Mode**: Fully optimized theme
+- **Offline-first**: Local database with Hive
 
 ## Tech Stack
 
-- **Frontend:** Next.js 15, TypeScript, Tailwind CSS
-- **Backend:** Next.js API Routes, Prisma
-- **Database:** PostgreSQL
-- **Charts:** Recharts
-
-## Features
-
-- Real-time data visualization
-- Custom report generation
-- User segmentation
-- API for data export
-
-<TechStack icons={["nextjs", "typescript", "postgresql", "prisma"]} />
-
-<LiveLighthouseScore />
+- **Framework**: Flutter (Cross-platform: Android, iOS, Web, Windows, Linux, macOS)
+- **State Management**: Riverpod
+- **Database**: Hive (Local NoSQL)
+- **Messaging**: mqtt_client
+- **Charts**: fl_chart
+- **Gauges**: Syncfusion Gauges

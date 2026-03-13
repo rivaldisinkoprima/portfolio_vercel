@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import type { Components } from "react-markdown";
 import { SlideUp, FadeIn } from "@/components/AnimateOnScroll";
 import { Metadata } from "next";
 
@@ -12,6 +13,7 @@ const categoryColors = {
   AI: "ai",
   IoT: "iot",
   Web: "web",
+  Mobile: "mobile",
 } as const;
 
 interface ProjectPageProps {
@@ -62,6 +64,16 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   };
 }
 
+const markdownComponents: Components = {
+  img: ({ src, alt }) => (
+    <img 
+      src={src} 
+      alt={alt}
+      className="w-full max-w-2xl mx-auto my-8 rounded-lg shadow-lg"
+    />
+  ),
+};
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
@@ -109,8 +121,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </SlideUp>
 
           <FadeIn delay={0.2}>
-            <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary prose-a:text-primary">
-              <ReactMarkdown>{project.content}</ReactMarkdown>
+            <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary prose-a:text-primary prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 prose-img:max-w-2xl prose-img:mx-auto">
+              <ReactMarkdown components={markdownComponents}>{project.content}</ReactMarkdown>
             </div>
           </FadeIn>
         </article>

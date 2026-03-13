@@ -8,6 +8,7 @@ const techStack = [
   { name: "TypeScript", color: "text-blue-500" },
   { name: "Python", color: "text-yellow-500" },
   { name: "React", color: "text-cyan-500" },
+  { name: "Flutter", color: "text-cyan-400" },
   { name: "Node.js", color: "text-green-500" },
   { name: "PostgreSQL", color: "text-blue-600" },
   { name: "TensorFlow", color: "text-orange-500" },
@@ -16,6 +17,7 @@ const techStack = [
   { name: "Docker", color: "text-blue-600" },
   { name: "AWS", color: "text-yellow-500" },
   { name: "LangChain", color: "text-purple-500" },
+  { name: "Riverpod", color: "text-purple-400" },
 ];
 
 export function TechStack() {

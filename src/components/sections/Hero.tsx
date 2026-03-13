@@ -53,8 +53,9 @@ export function Hero() {
                 </span>
                 . A Polyglot Engineer crafting solutions at the intersection of{" "}
                 <span className="text-purple-500 font-medium">AI</span>,{" "}
-                <span className="text-amber-500 font-medium">IoT</span>, and{" "}
-                <span className="text-indigo-500 font-medium">Web</span>.
+                <span className="text-amber-500 font-medium">IoT</span>,{" "}
+                <span className="text-indigo-500 font-medium">Web</span>, and{" "}
+                <span className="text-emerald-500 font-medium">Mobile</span>.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 items-center md:items-start justify-center md:justify-start">

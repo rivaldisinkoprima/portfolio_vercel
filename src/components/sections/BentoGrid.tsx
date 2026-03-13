@@ -15,6 +15,7 @@ const categoryColors = {
   AI: "ai",
   IoT: "iot",
   Web: "web",
+  Mobile: "mobile",
 } as const;
 
 export function BentoGrid({ projects }: BentoGridProps) {

@@ -9,6 +9,7 @@ const categoryColors = {
   AI: "ai",
   IoT: "iot",
   Web: "web",
+  Mobile: "mobile",
 } as const;
 
 export const metadata = {
@@ -40,7 +41,16 @@ export default function ProjectsPage() {
           {projects.map((project, index) => (
             <SlideUp key={project.slug} delay={0.1 + index * 0.1}>
               <Link href={`/projects/${project.slug}`}>
-                <Card className="h-full bg-card border-border group hover:border-primary/50 transition-all cursor-pointer hover:glow-cyan">
+                <Card className="h-full bg-card border-border group hover:border-primary/50 transition-all cursor-pointer hover:glow-cyan overflow-hidden">
+                  {project.image && (
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
                   <CardContent className="p-6 h-full flex flex-col">
                     <Badge variant={categoryColors[project.category]} className="w-fit mb-3">
                       {project.category}

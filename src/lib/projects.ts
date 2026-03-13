@@ -7,7 +7,7 @@ export interface ProjectMeta {
   slug: string;
   title: string;
   description: string;
-  category: "AI" | "IoT" | "Web";
+  category: "AI" | "IoT" | "Web" | "Mobile";
   tags: string[];
   date: string;
   image?: string;
@@ -82,7 +82,7 @@ export const getAllProjects = cache((): ProjectMeta[] => {
   return projects;
 });
 
-export const getProjectsByCategory = cache((category: "AI" | "IoT" | "Web"): ProjectMeta[] => {
+export const getProjectsByCategory = cache((category: "AI" | "IoT" | "Web" | "Mobile"): ProjectMeta[] => {
   const projects = getAllProjects();
   return projects.filter((project) => project.category === category);
 });
