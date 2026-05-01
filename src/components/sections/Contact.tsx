@@ -13,7 +13,7 @@ interface ContactProps {
 }
 
 const SUPPORTED_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
-const MAX_CERTIFICATES = 20;
+const MAX_CERTIFICATES = 100;
 
 export function Contact({ serverCertificates }: ContactProps) {
   const [certificates, setCertificates] = useState<Certificate[]>(serverCertificates);
@@ -26,7 +26,7 @@ export function Contact({ serverCertificates }: ContactProps) {
     const checkImage = (id: number, ext: string): Promise<boolean> => {
       return new Promise<boolean>((resolve) => {
         const img = new window.Image();
-        const src = `/certificate${id}.${ext}`;
+        const src = `/certificate/certificate${id}.${ext}`;
         img.onload = () => {
           if (img.width > 0) resolve(true);
           else resolve(false);
@@ -44,7 +44,7 @@ export function Contact({ serverCertificates }: ContactProps) {
             detected.push({
               id: i,
               filename: `certificate${i}.${ext}`,
-              src: `/certificate${i}.${ext}`,
+              src: `/certificate/certificate${i}.${ext}`,
               extension: ext,
             });
             break;
@@ -66,7 +66,10 @@ export function Contact({ serverCertificates }: ContactProps) {
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
 
-  const itemWidth = 100 / 3;
+  // Track is w-[500%] (5 duplicate sets), want 3 cards visible at a time.
+  // itemWidth = 100% of track / (5 duplications * 3 visible) = 100/15 ≈ 6.67%
+  // This means each card = 1/15 of total track = 1/3 of viewport ✓
+  const itemWidth = 100 / (5 * 3);
 
   return (
     <section className="py-16">
@@ -87,9 +90,6 @@ export function Contact({ serverCertificates }: ContactProps) {
           <div className="relative overflow-hidden">
             <div
               className="flex w-[500%] animate-marquee-certs"
-              style={{
-                animationPlayState: isLoaded ? 'running' : 'paused'
-              }}
             >
               {duplicatedCerts.map((cert, index) => (
                 <div

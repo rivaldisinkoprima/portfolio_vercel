@@ -8,35 +8,30 @@ export interface Certificate {
   extension: string;
 }
 
-const SUPPORTED_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
-const MAX_CERTIFICATES = 20;
+const SUPPORTED_EXTENSIONS = new Set(["jpg", "jpeg", "png", "webp", "gif"]);
 
 function getCertificatesFromFilesystem(): Certificate[] {
-  const certificates: Certificate[] = [];
-  const publicDir = path.join(process.cwd(), "public");
+  const publicDir = path.join(process.cwd(), "public", "certificate");
 
-  if (!fs.existsSync(publicDir)) {
-    return certificates;
-  }
+  if (!fs.existsSync(publicDir)) return [];
 
   const files = fs.readdirSync(publicDir);
+  const seen = new Map<number, Certificate>();
 
-  for (let i = 1; i <= MAX_CERTIFICATES; i++) {
-    for (const ext of SUPPORTED_EXTENSIONS) {
-      const filename = `certificate${i}.${ext}`;
-      if (files.includes(filename)) {
-        certificates.push({
-          id: i,
-          filename,
-          src: `/${filename}`,
-          extension: ext,
-        });
-        break;
-      }
+  for (const filename of files) {
+    const match = filename.match(/^certificate(\d+)\.([a-z]+)$/i);
+    if (!match) continue;
+    const id = parseInt(match[1], 10);
+    const ext = match[2].toLowerCase();
+    if (!SUPPORTED_EXTENSIONS.has(ext)) continue;
+    // Keep only first match per id (prefer jpg over others by sort order)
+    if (!seen.has(id)) {
+      seen.set(id, { id, filename, src: `/certificate/${filename}`, extension: ext });
     }
   }
 
-  return certificates;
+  // Sort by id ascending
+  return Array.from(seen.values()).sort((a, b) => a.id - b.id);
 }
 
 export function getCertificates(): Certificate[] {
