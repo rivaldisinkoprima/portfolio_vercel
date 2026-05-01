@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,51 +12,9 @@ interface ContactProps {
   serverCertificates: Certificate[];
 }
 
-const SUPPORTED_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
-const MAX_CERTIFICATES = 100;
-
 export function Contact({ serverCertificates }: ContactProps) {
   const [certificates, setCertificates] = useState<Certificate[]>(serverCertificates);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    const detected: Certificate[] = [];
-
-    const checkImage = (id: number, ext: string): Promise<boolean> => {
-      return new Promise<boolean>((resolve) => {
-        const img = new window.Image();
-        const src = `/certificate/certificate${id}.${ext}`;
-        img.onload = () => {
-          if (img.width > 0) resolve(true);
-          else resolve(false);
-        };
-        img.onerror = () => resolve(false);
-        img.src = src;
-      });
-    };
-
-    const runDetection = async () => {
-      for (let i = 1; i <= MAX_CERTIFICATES; i++) {
-        for (const ext of SUPPORTED_EXTENSIONS) {
-          const exists = await checkImage(i, ext);
-          if (exists) {
-            detected.push({
-              id: i,
-              filename: `certificate${i}.${ext}`,
-              src: `/certificate/certificate${i}.${ext}`,
-              extension: ext,
-            });
-            break;
-          }
-        }
-      }
-      setCertificates(detected);
-      setIsLoaded(true);
-    };
-
-    runDetection();
-  }, []);
 
   const duplicatedCerts = useMemo(() => {
     if (certificates.length === 0) return [];

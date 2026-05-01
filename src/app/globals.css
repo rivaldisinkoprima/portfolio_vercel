@@ -103,6 +103,7 @@ body {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -110,22 +111,18 @@ body {
 
 .animate-shimmer {
   animation: shimmer 2s infinite linear;
-  background: linear-gradient(
-    90deg,
-    var(--muted) 0%,
-    var(--muted-foreground) 50%,
-    var(--muted) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--muted) 0%,
+      var(--muted-foreground) 50%,
+      var(--muted) 100%);
   background-size: 200% 100%;
 }
 
 .light .animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--muted) 0%,
-    #d4d4d8 50%,
-    var(--muted) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--muted) 0%,
+      #d4d4d8 50%,
+      var(--muted) 100%);
   background-size: 200% 100%;
 }
 
@@ -170,7 +167,7 @@ body {
 }
 
 .animate-marquee-certs {
-  animation: marquee-certs 40s linear infinite;
+  animation: marquee-certs 90s linear infinite;
 }
 
 /* Lenis Recommended CSS */
