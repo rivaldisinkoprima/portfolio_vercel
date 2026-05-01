@@ -70,7 +70,7 @@ const markdownComponents: Components = {
   img: ({ src, alt }) => {
     const isMobile = alt?.includes("| mobile");
     const cleanAlt = alt?.replace("| mobile", "").trim();
-    return <ProjectImage src={src || ""} alt={cleanAlt || ""} isMobile={isMobile} />;
+    return <ProjectImage src={(src as string) || ""} alt={cleanAlt || ""} isMobile={isMobile} />;
   }
 };
 
