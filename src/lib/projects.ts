@@ -12,6 +12,7 @@ export interface ProjectMeta {
   date: string;
   image?: string;
   featured?: boolean;
+  githubUrl?: string;
 }
 
 export interface Project extends ProjectMeta {
@@ -58,6 +59,7 @@ export const getProjectBySlug = cache((slug: string): Project | null => {
     date: data.date,
     image: data.image,
     featured: data.featured,
+    githubUrl: data.githubUrl,
     content,
   };
 });

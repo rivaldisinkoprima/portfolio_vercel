@@ -121,6 +121,7 @@ export default function RootLayout({
         />
         <link rel="apple-touch-icon" href="/icon.svg" />
         <script
+          id="structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

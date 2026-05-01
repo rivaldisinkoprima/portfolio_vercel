@@ -3,10 +3,12 @@ import Link from "next/link";
 import { getProjectBySlug, getAllProjects } from "@/lib/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, Tag, Github, ExternalLink } from "lucide-react";
+import { ProjectImage } from "@/components/ui/ProjectImage";
 import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import { SlideUp, FadeIn } from "@/components/AnimateOnScroll";
+import { TechStack } from "@/components/mdx/TechStack";
 import { Metadata } from "next";
 
 const categoryColors = {
@@ -65,13 +67,11 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 }
 
 const markdownComponents: Components = {
-  img: ({ src, alt }) => (
-    <img 
-      src={src} 
-      alt={alt}
-      className="w-full max-w-2xl mx-auto my-8 rounded-lg shadow-lg"
-    />
-  ),
+  img: ({ src, alt }) => {
+    const isMobile = alt?.includes("| mobile");
+    const cleanAlt = alt?.replace("| mobile", "").trim();
+    return <ProjectImage src={src || ""} alt={cleanAlt || ""} isMobile={isMobile} />;
+  }
 };
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -100,10 +100,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <Badge variant={categoryColors[project.category]} className="mb-4">
                 {project.category}
               </Badge>
-              <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+               <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
               <p className="text-xl text-muted-foreground mb-6">{project.description}</p>
               
-              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+              <div className="mb-8">
+                <TechStack icons={project.tags.map(t => t.toLowerCase())} />
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   <span>{project.date}</span>
@@ -116,6 +120,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     ))}
                   </div>
                 </div>
+                
+                {project.githubUrl && (
+                  <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="ml-auto">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Github className="w-4 h-4" />
+                      Source Code
+                    </Button>
+                  </Link>
+                )}
               </div>
             </header>
           </SlideUp>

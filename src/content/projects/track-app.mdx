@@ -1,0 +1,40 @@
+---
+title: "TrackIt App"
+description: "A smart personal finance app featuring Offline Voice Tracking (Speech-to-Text), Natural Machine Learning, and biometric security."
+category: "Mobile"
+tags: ["Kotlin", "Android", "Compose", "Room"]
+date: "2026-05-02"
+image: "/project/Track-app/track.jpeg"
+featured: true
+githubUrl: "https://github.com/rivaldiekaptrrr/Track-app"
+---
+
+# TrackIt App
+
+An Android-based personal finance app designed to eliminate the friction of logging income and expenses. With Offline Voice Tracking (Speech-to-Text) technology, you simply speak your transactions in natural language, and the app automatically fills out the form.
+
+![TrackIt App](/project/Track-app/track.jpeg)
+
+## Overview
+
+Tracking expenses is often a hassle for many. **TrackIt** introduces a new approach: just say what you spent (e.g., "bought vegetables for 50 thousand" or "got a salary of 5 million"), and the form is automatically populated along with its category! Everything is processed 100% offline to protect your privacy.
+
+## Tech Stack
+
+- **Platform:** Android (API 26+)
+- **Language:** Kotlin
+- **UI Framework:** Jetpack Compose & Material Design 3
+- **Local Database:** Room Database
+- **Architecture:** MVVM with Clean Architecture Principles
+- **Core Services:** SpeechRecognizer (Offline STT) & TextToSpeech (TTS Engine)
+
+## Features
+
+- **Offline Voice Tracking:** Add transactions as fast as you can speak without an internet connection using Android SpeechRecognizer.
+- **Natural Machine Learning:** The app learns from your input. If there's a new category, the system automatically adds it to its recognition memory for future transactions.
+- **Multi-Transaction Voice Input:** Mentioning multiple transactions at once in a single sentence (e.g., "bought coffee for 20 thousand and snacks for 15 thousand") will be automatically split by the system.
+- **Local Backup & Restore:** Data security is a priority. Export and import data locally (JSON/Database) to ensure your financial history is never lost.
+- **Biometric Security:** Protect app access with Fingerprint or Face Unlock, along with `FLAG_SECURE` to prevent screenshots on sensitive pages.
+- **Smart Budget Notifications:** Intelligent notifications that remind you if your expenses are approaching or exceeding your monthly budget limit.
+- **Interactive Financial Analytics:** Visualize your income and expense data through interactive charts to help you analyze your financial habits.
+- **Clean UI & Dark Mode:** A modern interface built with Jetpack Compose, featuring full support for dark mode.

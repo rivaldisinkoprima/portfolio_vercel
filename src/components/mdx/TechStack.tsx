@@ -18,6 +18,12 @@ const iconMap: Record<string, string> = {
   fastapi: "⚡",
   postgresql: "🐘",
   prisma: "🔷",
+  flutter: "💙",
+  dart: "🎯",
+  kotlin: "🟣",
+  android: "🤖",
+  room: "🗄️",
+  compose: "🎨",
 };
 
 export function TechStack({ icons }: TechStackProps) {
