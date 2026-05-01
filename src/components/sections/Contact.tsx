@@ -60,16 +60,15 @@ export function Contact({ serverCertificates }: ContactProps) {
 
   const duplicatedCerts = useMemo(() => {
     if (certificates.length === 0) return [];
-    return [...certificates, ...certificates, ...certificates, ...certificates, ...certificates];
+    // Duplicate enough times to fill a seamless loop
+    return [...certificates, ...certificates, ...certificates];
   }, [certificates]);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
 
-  // Track is w-[500%] (5 duplicate sets), want 3 cards visible at a time.
-  // itemWidth = 100% of track / (5 duplications * 3 visible) = 100/15 ≈ 6.67%
-  // This means each card = 1/15 of total track = 1/3 of viewport ✓
-  const itemWidth = 100 / (5 * 3);
+  // Fixed card width: 280px + 16px gap = 296px per card
+  const CARD_WIDTH = 296;
 
   return (
     <section className="py-16">
@@ -88,17 +87,27 @@ export function Contact({ serverCertificates }: ContactProps) {
           </div>
 
           <div className="relative overflow-hidden">
+            {/* Gradient fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent" />
+
             <div
-              className="flex w-[500%] animate-marquee-certs"
+              className="flex animate-marquee-certs"
+              style={{
+                width: `${duplicatedCerts.length * CARD_WIDTH}px`,
+              }}
             >
               {duplicatedCerts.map((cert, index) => (
                 <div
                   key={`${cert.id}-${index}`}
-                  className="px-2"
-                  style={{ width: `${itemWidth}%` }}
+                  className="px-2 flex-shrink-0"
+                  style={{ width: `${CARD_WIDTH}px` }}
                 >
                   <motion.div
-                    className="relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer group"
+                    className="relative rounded-xl overflow-hidden cursor-pointer group border border-border/50 shadow-md"
+                    style={{ aspectRatio: "4/3" }}
+                    whileHover={{ scale: 1.03, y: -4 }}
+                    transition={{ duration: 0.2 }}
                     onClick={() => openLightbox((cert.id - 1) % certificates.length)}
                   >
                     <Image
@@ -107,8 +116,8 @@ export function Contact({ serverCertificates }: ContactProps) {
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-foreground/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="text-background text-sm font-medium">View</span>
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="text-white text-sm font-semibold tracking-wide bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full">View</span>
                     </div>
                   </motion.div>
                 </div>

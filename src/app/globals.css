@@ -165,12 +165,12 @@ body {
   }
 
   100% {
-    transform: translateX(-20%);
+    transform: translateX(-33.333%);
   }
 }
 
 .animate-marquee-certs {
-  animation: marquee-certs 20s linear infinite;
+  animation: marquee-certs 40s linear infinite;
 }
 
 /* Lenis Recommended CSS */
