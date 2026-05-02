@@ -43,11 +43,15 @@ export default function ProjectsPage() {
               <Link href={`/projects/${project.slug}`}>
                 <Card className="h-full bg-card border-border group hover:border-primary/50 transition-all cursor-pointer hover:glow-cyan overflow-hidden">
                   {project.image && (
-                    <div className="aspect-video overflow-hidden">
+                    <div className="aspect-video overflow-hidden bg-muted/10">
                       <img 
                         src={project.image} 
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className={`w-full h-full transition-transform duration-700 ease-out ${
+                          (Array.isArray(project.category) ? project.category.includes("Web") : project.category === "Web")
+                            ? 'object-contain scale-125 group-hover:scale-100'
+                            : 'object-cover group-hover:scale-105'
+                        }`}
                       />
                     </div>
                   )}
