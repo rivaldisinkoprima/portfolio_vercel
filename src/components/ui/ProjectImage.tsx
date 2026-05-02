@@ -16,19 +16,21 @@ export function ProjectImage({ src, alt, isMobile }: ProjectImageProps) {
   return (
     <>
       <div
-        className={`relative group cursor-pointer overflow-hidden rounded-lg shadow-md border border-border/50 inline-block align-top m-2 ${isMobile ? 'w-[140px] sm:w-[220px]' : 'w-[calc(100%-1rem)] max-w-3xl mx-auto block'
+        className={`group cursor-pointer rounded-xl bg-card/40 backdrop-blur-sm border border-border/50 shadow-sm inline-block align-top p-3 sm:p-4 hover:border-primary/30 transition-all duration-300 ${isMobile ? 'w-[140px] sm:w-[220px] m-2' : 'w-full mx-auto block my-8'
           }`}
         onClick={() => setIsOpen(true)}
       >
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="flex items-center gap-2 text-white text-sm font-medium bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
-            <ZoomIn className="w-4 h-4" /> View
-          </span>
+        <div className="relative overflow-hidden rounded-lg w-full h-full">
+          <img
+            src={src}
+            alt={alt}
+            className="w-full h-auto object-cover !m-0 block transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <span className="flex items-center gap-2 text-white text-sm font-medium bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+              <ZoomIn className="w-4 h-4" /> View
+            </span>
+          </div>
         </div>
       </div>
 

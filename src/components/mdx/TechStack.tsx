@@ -24,6 +24,16 @@ const iconMap: Record<string, string> = {
   android: "🤖",
   room: "🗄️",
   compose: "🎨",
+  supabase: "⚡",
+  cpp: "⚙️",
+  platformio: "👽",
+  bluetooth: "📶",
+  iot: "🌐",
+  mobile: "📱",
+  tailwindcss: "🌊",
+  reactquery: "🔄",
+  resend: "📧",
+  radixui: "🧩",
 };
 
 export function TechStack({ icons }: TechStackProps) {

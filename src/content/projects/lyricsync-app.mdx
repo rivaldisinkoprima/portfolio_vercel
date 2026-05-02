@@ -1,0 +1,37 @@
+---
+title: "LyricSync & ESP32 Player"
+description: "An integrated audio screening system featuring an ESP32-S3 hardware player and a Flutter mobile app for lyric management and BLE synchronization."
+category: ["IoT", "Mobile"]
+tags: ["Flutter", "Dart", "ESP32", "Cpp", "PlatformIO", "Bluetooth", "Supabase", "IoT", "Mobile"]
+date: "2026-05-02"
+image: "/project/LyricSync-App/lyric.png"
+featured: true
+githubUrl: "https://github.com/rivaldiekaptrrr/LyricSync-App"
+---
+
+# LyricSync & ESP32 Audio Player
+
+An advanced audio screening and lyric synchronization system that bridges custom embedded hardware with a modern mobile application.
+
+![LyricSync App](/project/LyricSync-App/lyric.png)
+
+## Overview
+
+This project is a comprehensive audio screening system designed for precise audio playback and synchronized lyric display. It consists of a custom-built **ESP32-S3 Lyric Player** hardware device and a companion **Flutter Mobile App**. The mobile app allows users to manage workspaces, detect audio spikes for timing, and synchronize lyrics directly to the hardware device via Bluetooth Low Energy (BLE). It also features a Cloud OTA (Over-The-Air) update mechanism for seamless asset distribution.
+
+## Tech Stack
+
+- **Hardware:** ESP32-S3, TFT ST7735 Display, DFPlayer Mini, DS3231 RTC
+- **Firmware:** C++ (PlatformIO), FreeRTOS, LittleFS
+- **Mobile App:** Flutter, Dart
+- **Communication:** Bluetooth Low Energy (BLE)
+- **Cloud Infrastructure:** Supabase Storage (CDN for OTA Updates)
+
+## Features
+
+- **Audio Spike Detection:** Automatically detects word timings from MP3 files within the Flutter app to simplify lyric synchronization.
+- **Bluetooth (BLE) Synchronization:** Seamlessly transfers up to 10 workspaces of customized lyrics and timings from the mobile app to the ESP32 hardware using chunked JSON payloads.
+- **Cloud-Based OTA Updates:** A secure, hard-gated Over-The-Air update system powered by Supabase CDN to keep the hardware's internal NVS and audio assets up to date.
+- **Hardware Integration:** The ESP32 device features a TFT display for real-time lyric rendering, a DFPlayer for reliable audio playback, and an RTC module for accurate timekeeping.
+- **Workspace Management:** The Flutter app allows precise control over timing offsets (-500ms to +500ms) to compensate for hardware latency.
+- **Premium Mobile UI:** Features a custom animated splash screen, interactive visualizers, and state-of-the-art workspace editors.

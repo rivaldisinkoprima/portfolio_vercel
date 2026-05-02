@@ -1,0 +1,41 @@
+---
+title: "SmartRecruit"
+description: "A modern Applicant Tracking System (ATS) powered by AI. It automates resume parsing, candidate scoring, and email notifications to streamline the recruitment pipeline."
+category: ["Web", "AI"]
+tags: ["NextJS", "TypeScript", "TailwindCSS", "Supabase", "OpenAI", "ReactQuery", "Resend", "RadixUI"]
+date: "2026-05-02"
+image: "/project/ats-app/ats1.png"
+featured: true
+githubUrl: "https://github.com/rivaldiekaptrrr/ATS-App"
+---
+
+# SmartRecruit ATS
+
+A next-generation Applicant Tracking System designed to help HR teams manage job postings, track candidate pipelines, and make data-driven hiring decisions using Artificial Intelligence.
+
+![SmartRecruit Dashboard](/project/ats-app/ats1.png)
+
+## Overview
+
+SmartRecruit is a comprehensive recruitment management platform. It provides an intuitive public job portal for applicants and a powerful dashboard for HR administrators. The system leverages modern web technologies and AI to automate repetitive tasks, such as parsing resumes and scoring candidates, allowing recruiters to focus on finding the best talent.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router & Server Actions)
+- **Language:** TypeScript
+- **Database & Auth:** Supabase (PostgreSQL)
+- **AI Integration:** OpenAI
+- **Email Service:** Resend
+- **Styling:** Tailwind CSS & Radix UI (shadcn/ui)
+- **State Management:** TanStack React Query
+
+## Key Features
+
+- **Automation & Intelligence (AI):** Automatically extracts candidate information (Name, Email, Phone, Summary) from PDF resumes. It also calculates an AI Resume Score (0-100) by comparing the candidate's skills against the job requirements.
+- **Kanban Recruitment Pipeline:** Visualizes candidate statuses (Screening, Interview, Test, Offering, Hired, Rejected) using a drag-and-drop Kanban board.
+
+![SmartRecruit Pipeline](/project/ats-app/ats2.png)
+- **Email Automation:** Automatically triggers and sends email notifications (e.g., interview invitations, rejection notices) whenever a candidate's status is updated in the pipeline.
+- **Duplicate Detection:** Prevents multiple applications from the same email for the same position, ensuring data integrity.
+- **Flexible Operational Modes:** Seamlessly switch between a Mock Data mode for quick demonstrations and a Production mode connected to a real Supabase backend.
+- **Job Management:** Create, edit, and manage job postings with rich-text capabilities, complete with Draft, Active, and Closed statuses.

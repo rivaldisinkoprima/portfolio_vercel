@@ -52,9 +52,13 @@ export default function ProjectsPage() {
                     </div>
                   )}
                   <CardContent className="p-6 h-full flex flex-col">
-                    <Badge variant={categoryColors[project.category]} className="w-fit mb-3">
-                      {project.category}
-                    </Badge>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {(Array.isArray(project.category) ? project.category : [project.category]).map(cat => (
+                        <Badge key={cat} variant={categoryColors[cat as keyof typeof categoryColors] || "outline"} className="w-fit">
+                          {cat}
+                        </Badge>
+                      ))}
+                    </div>
                     <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       {project.title}
                     </h2>

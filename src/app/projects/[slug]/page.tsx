@@ -97,9 +97,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <article>
           <SlideUp delay={0.1}>
             <header className="mb-8">
-              <Badge variant={categoryColors[project.category]} className="mb-4">
-                {project.category}
-              </Badge>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {(Array.isArray(project.category) ? project.category : [project.category]).map(cat => (
+                  <Badge key={cat} variant={categoryColors[cat as keyof typeof categoryColors] || "outline"}>
+                    {cat}
+                  </Badge>
+                ))}
+              </div>
                <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
               <p className="text-xl text-muted-foreground mb-6">{project.description}</p>
               
@@ -134,7 +138,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </SlideUp>
 
           <FadeIn delay={0.2}>
-            <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary prose-a:text-primary prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 prose-img:max-w-2xl prose-img:mx-auto">
+            <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary prose-a:text-primary prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 prose-img:mx-auto">
               <ReactMarkdown components={markdownComponents}>{project.content}</ReactMarkdown>
             </div>
           </FadeIn>

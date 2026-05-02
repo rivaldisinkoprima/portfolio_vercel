@@ -7,7 +7,7 @@ export interface ProjectMeta {
   slug: string;
   title: string;
   description: string;
-  category: "AI" | "IoT" | "Web" | "Mobile";
+  category: "AI" | "IoT" | "Web" | "Mobile" | string[];
   tags: string[];
   date: string;
   image?: string;
@@ -84,9 +84,14 @@ export const getAllProjects = cache((): ProjectMeta[] => {
   return projects;
 });
 
-export const getProjectsByCategory = cache((category: "AI" | "IoT" | "Web" | "Mobile"): ProjectMeta[] => {
+export const getProjectsByCategory = cache((category: string): ProjectMeta[] => {
   const projects = getAllProjects();
-  return projects.filter((project) => project.category === category);
+  return projects.filter((project) => {
+    if (Array.isArray(project.category)) {
+      return project.category.includes(category);
+    }
+    return project.category === category;
+  });
 });
 
 export const getFeaturedProjects = cache((): ProjectMeta[] => {

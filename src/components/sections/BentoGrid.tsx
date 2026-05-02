@@ -68,9 +68,13 @@ export function BentoGrid({ projects }: BentoGridProps) {
               <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
               <CardContent className="p-6 h-full flex flex-col justify-between relative z-10">
                 <div>
-                  <Badge variant={categoryColors[project.category]} className="mb-4">
-                    {project.category}
-                  </Badge>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {(Array.isArray(project.category) ? project.category : [project.category]).map(cat => (
+                      <Badge key={cat} variant={categoryColors[cat as keyof typeof categoryColors] || "outline"}>
+                        {cat}
+                      </Badge>
+                    ))}
+                  </div>
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
