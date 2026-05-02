@@ -1,0 +1,38 @@
+---
+title: "DocuStack"
+description: "A comprehensive Knowledge Management System (KMS) for internal documentation, activity tracking, and error reporting."
+category: ["Web"]
+tags: ["React", "Vite", "NodeJS", "Express", "PostgreSQL", "JavaScript"]
+date: "2026-05-03"
+image: "/project/docs-app/docs1.png"
+featured: false
+githubUrl: "https://github.com/rivaldiekaptrrr/Docs-App"
+---
+
+# DocuStack & Knowledge Management System
+
+DocuStack is a comprehensive web-based platform designed for internal technical teams. It streamlines knowledge management, technical reporting, and daily activity tracking, ensuring that critical institutional knowledge is preserved and easily accessible across the local network.
+
+![DocuStack Dashboard](/project/docs-app/docs1.png)
+
+## Overview
+
+Managing technical knowledge within a Research & Development or IT department requires robust tools. DocuStack acts as a central hub (R&D Hub) where technicians and engineers can seamlessly document projects, track daily logbooks, and report troubleshooting steps. The platform is highly accessible on local networks and offers a seamless visual documentation flow.
+
+## Tech Stack
+
+- **Frontend:** React 19, Vite, React Router, Axios, React Quill (Rich Text)
+- **Backend:** Node.js, Express.js
+- **Database:** PostgreSQL
+- **Authentication:** JWT with Role-Based Access Control
+- **File Handling:** Multer for direct uploads & clipboard integrations
+
+![DocuStack Documentation Interface](/project/docs-app/docs2.png)
+
+## Key Features
+
+- **Project & Grid Documentation:** Organize documentation into intuitive project cards. The integrated React Quill editor provides rich text capabilities for writing detailed guides and standard operating procedures.
+- **Daily Logbook & Error Reporting:** Technicians can track daily activities with image attachments and log before-and-after states of troubleshooting processes to build a robust error-resolution database.
+- **Visual Documentation (Clipboard Support):** Specifically engineered for fast documentation, the platform allows users to paste screenshots directly from their clipboard (Base64) into the documentation editor.
+- **Role-Based Access Control:** Differentiates between 'Tech Users' who can create/edit documentation and 'Viewer Users' who have read-only access.
+- **Mock Mode / Development Mode:** Features an in-memory mock database mode, allowing the application to run immediately for demonstrations without needing PostgreSQL installation.

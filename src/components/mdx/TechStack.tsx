@@ -36,6 +36,12 @@ const iconMap: Record<string, string> = {
   radixui: "🧩",
   golang: "🐹",
   neon: "🟢",
+  express: "🚀",
+  googlesheets: "📊",
+  javascript: "JS",
+  html: "🌐",
+  css: "🎨",
+  vite: "⚡",
 };
 
 export function TechStack({ icons }: TechStackProps) {

@@ -15,28 +15,28 @@ export function ProjectImage({ src, alt, isMobile }: ProjectImageProps) {
 
   return (
     <>
-      <div
+      <span
         className={`group cursor-pointer rounded-xl bg-card/40 backdrop-blur-sm border border-border/50 shadow-sm inline-block align-top p-3 sm:p-4 hover:border-primary/30 transition-all duration-300 ${isMobile ? 'w-[140px] sm:w-[220px] m-2' : 'w-full mx-auto block my-8'
           }`}
         onClick={() => setIsOpen(true)}
       >
-        <div className="relative overflow-hidden rounded-lg w-full h-full">
+        <span className="relative overflow-hidden rounded-lg w-full h-full block">
           <img
             src={src}
             alt={alt}
             className="w-full h-auto object-cover !m-0 block transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <span className="flex items-center gap-2 text-white text-sm font-medium bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
               <ZoomIn className="w-4 h-4" /> View
             </span>
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -53,7 +53,7 @@ export function ProjectImage({ src, alt, isMobile }: ProjectImageProps) {
               <X className="w-6 h-6" />
             </button>
 
-            <motion.div
+            <motion.span
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
@@ -66,8 +66,8 @@ export function ProjectImage({ src, alt, isMobile }: ProjectImageProps) {
                 alt={alt}
                 className="max-w-full max-h-[90vh] object-contain rounded-md shadow-2xl"
               />
-            </motion.div>
-          </motion.div>
+            </motion.span>
+          </motion.span>
         )}
       </AnimatePresence>
     </>

@@ -1,0 +1,37 @@
+---
+title: "Empower360"
+description: "A 360-degree employee appraisal web system that leverages Google Sheets as a powerful, real-time database."
+category: ["Web"]
+tags: ["NodeJS", "Express", "GoogleSheets", "JavaScript", "HTML", "CSS"]
+date: "2026-05-02"
+image: "/project/empower360-app/empower1.jpeg"
+featured: false
+githubUrl: "https://github.com/rivaldiekaptrrr/360AppraisalEmployee-App"
+---
+
+# Empower360 - 360-Degree Appraisal System
+
+Empower360 is a streamlined, web-based 360-degree employee appraisal and performance review system. Uniquely designed for simplicity and cost-effectiveness, it leverages the Google Sheets API as its primary database, providing HR teams with a familiar and easily accessible data storage solution.
+
+![Empower360 Dashboard](/project/empower360-app/empower1.jpeg)
+
+## Overview
+
+The platform facilitates transparent and organized employee evaluations. It separates functionality between an Employee Portal (for submitting reviews) and an Admin/HR Dashboard (for managing users and assignments). By using Google Sheets as the backend, any data submitted via the web app is instantly synced to a spreadsheet, making data export, reporting, and backup incredibly straightforward for HR personnel.
+
+## Tech Stack
+
+- **Backend:** Node.js, Express.js
+- **Frontend:** Vanilla JavaScript, HTML5, CSS3
+- **Database:** Google Sheets API
+- **Authentication:** Session-based authentication with distinct user roles
+
+![Empower360 Admin & Assignment View](/project/empower360-app/empower2.jpeg)
+
+## Key Features
+
+- **Google Sheets Integration:** Automatically saves all appraisal results, employee data, and assignments directly into a designated Google Spreadsheet in real-time.
+- **Smart Assignment Logic:** Employees can only evaluate peers assigned to them by HR, and the system automatically hides peers once their evaluation is submitted. It strictly prevents self-evaluation.
+- **Dedicated HR Dashboard:** Allows administrators to easily manage employee credentials, configure 360-degree peer-to-peer review assignments, and oversee all submitted feedback.
+- **Mock Data Mode:** Includes a fully functional in-memory development mode that allows the application to run without any Google Cloud credentials, perfect for quick demonstrations.
+- **Secure Authentication:** Implements secure session management and role-based access control (RBAC) to ensure that employee feedback remains confidential and only accessible to HR.
