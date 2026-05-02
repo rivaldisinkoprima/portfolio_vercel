@@ -60,7 +60,7 @@ export function BentoGrid({ projects }: BentoGridProps) {
         </Card>
 
         {/* Project Cards */}
-        {projects.slice(0, 3).map((project) => (
+        {projects.filter(p => p.featured).slice(0, 4).map((project) => (
           <Link key={project.slug} href={`/projects/${project.slug}`} className="block h-full">
             <Card
               className="h-full bg-card/60 backdrop-blur-md border border-border/50 group hover:border-primary/30 transition-all duration-500 cursor-pointer overflow-hidden relative min-h-[200px] hover:glow-cyan"
