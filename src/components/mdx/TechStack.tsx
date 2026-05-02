@@ -34,6 +34,8 @@ const iconMap: Record<string, string> = {
   reactquery: "🔄",
   resend: "📧",
   radixui: "🧩",
+  golang: "🐹",
+  neon: "🟢",
 };
 
 export function TechStack({ icons }: TechStackProps) {
