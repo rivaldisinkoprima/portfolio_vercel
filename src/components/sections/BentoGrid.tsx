@@ -52,7 +52,7 @@ export function BentoGrid({ projects }: BentoGridProps) {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center transform group-hover:scale-105 transition-transform duration-500">
                 <MapPin className="w-8 h-8 text-primary mx-auto mb-2 drop-shadow-lg" />
-                <p className="font-mono text-sm text-foreground">Jakarta, Indonesia</p>
+                <p className="font-mono text-sm text-foreground">Surabaya, Indonesia</p>
                 <p className="text-xs text-muted-foreground mt-1">UTC+7 • Available for hire</p>
               </div>
             </div>

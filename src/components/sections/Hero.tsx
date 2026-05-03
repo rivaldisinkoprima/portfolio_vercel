@@ -105,7 +105,7 @@ export function Hero() {
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-card">
                   <Image
                     src="/profile.jpg"
-                    alt="Rivaldi Eka Putra - Full Stack Developer specializing in AI, IoT, Web, and Mobile Development"
+                    alt="Rivaldi Eka Putra - Polyglot Engineer specializing in AI, IoT, Web, and Mobile Development"
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover scale-105 hover:scale-100 transition-transform duration-700"
@@ -142,7 +142,7 @@ export function Hero() {
                 className="absolute -bottom-2 -left-2 md:-bottom-6 md:-left-6 bg-card/90 backdrop-blur-sm border border-border p-2.5 sm:p-3 rounded-2xl shadow-xl z-20"
               >
                 <span className="text-[10px] sm:text-xs font-mono text-primary whitespace-nowrap">
-                  Full Stack Engineer
+                  Polyglot Engineer
                 </span>
               </motion.div>
             </div>

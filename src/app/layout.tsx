@@ -35,11 +35,11 @@ export const metadata: Metadata = {
     template: "%s | Rivaldi Eka Putra",
   },
   description:
-    "Portfolio Rivaldi Eka Putra - Full Stack Developer specializing AI, IoT, Web, and Mobile Development. Lihat proyek, skills, pengalaman, dan kontak profesional.",
+    "Portfolio Rivaldi Eka Putra - Polyglot Engineer specializing AI, IoT, Web, and Mobile Development. Lihat proyek, skills, pengalaman, dan kontak profesional.",
   keywords: [
     "Rivaldi Eka Putra",
     "portfolio",
-    "full stack developer",
+    "polyglot engineer",
     "AI developer",
     "IoT developer",
     "web developer",
@@ -65,13 +65,13 @@ export const metadata: Metadata = {
     siteName: "Rivaldi Eka Putra Portfolio",
     title: "Rivaldi Eka Putra | Polyglot Engineer - AI, IoT, Web & Mobile Developer",
     description:
-      "Portfolio Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development.",
+      "Portfolio Rivaldi Eka Putra - Polyglot Engineer spesialis AI, IoT, Web, dan Mobile Development.",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Rivaldi Eka Putra - Full Stack Developer Portfolio",
+        alt: "Rivaldi Eka Putra - Polyglot Engineer Portfolio",
       },
     ],
   },
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rivaldi Eka Putra | Polyglot Engineer",
     description:
-      "Full Stack Developer - AI, IoT, Web & Mobile Development | Jakarta, Indonesia",
+      "Polyglot Engineer - AI, IoT, Web & Mobile Development | Surabaya, Indonesia",
     images: ["/og-image.svg"],
     creator: "@rivaldiekaptr",
     site: "@rivaldiekaptr",
@@ -131,9 +131,9 @@ export default function RootLayout({
               name: "Rivaldi Eka Putra",
               url: "https://www.valporto.my.id",
               image: "https://www.valporto.my.id/og-image.svg",
-              jobTitle: "Full Stack Developer",
+              jobTitle: "Polyglot Engineer",
               description:
-                "Full Stack Developer specializing in AI, IoT, Web, and Mobile Development based in Jakarta, Indonesia",
+                "Polyglot Engineer specializing in AI, IoT, Web, and Mobile Development based in Surabaya, Indonesia",
               email: "rivaldiekaputr@gmail.com",
               telephone: "+62895616181056",
               address: {

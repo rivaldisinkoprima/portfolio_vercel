@@ -9,10 +9,10 @@ import { SlideUp, SlideLeft } from "@/components/AnimateOnScroll";
 
 export const metadata: Metadata = {
   title: "About | Rivaldi Eka Putra - Polyglot Engineer",
-  description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development. Pelajari lebih lanjut tentang latar belakang, skills, dan pengalaman saya.",
+  description: "Tentang Rivaldi Eka Putra - Polyglot Engineer spesialis AI, IoT, Web, dan Mobile Development. Pelajari lebih lanjut tentang latar belakang, skills, dan pengalaman saya.",
   openGraph: {
     title: "About | Rivaldi Eka Putra",
-    description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development.",
+    description: "Tentang Rivaldi Eka Putra - Polyglot Engineer spesialis AI, IoT, Web, dan Mobile Development.",
     url: "https://www.valporto.my.id/about",
     type: "profile",
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About | Rivaldi Eka Putra",
-    description: "Tentang Rivaldi Eka Putra - Full Stack Developer spesialis AI, IoT, Web, dan Mobile Development.",
+    description: "Tentang Rivaldi Eka Putra - Polyglot Engineer spesialis AI, IoT, Web, dan Mobile Development.",
     images: ["/og-image.svg"],
   },
 };
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4" />
-                  <span>Jakarta, Indonesia</span>
+                  <span>Surabaya, Indonesia</span>
                 </div>
                 <a href="mailto:rivaldiekaputr@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />
@@ -138,50 +138,75 @@ export default function AboutPage() {
           <SlideUp delay={0.2}>
             <h2 className="text-2xl font-bold mb-6">Skills & Expertise</h2>
           </SlideUp>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             <SlideUp delay={0.3}>
-              <Card className="bg-card border-border">
+              <Card className="bg-card border-border h-full">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold mb-4 text-primary">AI / Machine Learning</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">Python</Badge>
                     <Badge variant="outline">TensorFlow</Badge>
-                    <Badge variant="outline">PyTorch</Badge>
-                    <Badge variant="outline">LangChain</Badge>
+                    <Badge variant="outline">Keras</Badge>
+                    <Badge variant="outline">Google Colab</Badge>
                     <Badge variant="outline">OpenAI</Badge>
-                    <Badge variant="outline">Hugging Face</Badge>
+                    <Badge variant="outline">Jupyter</Badge>
+                    <Badge variant="outline">OpenClaw</Badge>
+                    <Badge variant="outline">Claude Code</Badge>
+                    <Badge variant="outline">Vibe Coding</Badge>
+                    <Badge variant="outline">OpenCode</Badge>
+                    <Badge variant="outline">Antigravity</Badge>
                   </div>
                 </CardContent>
               </Card>
             </SlideUp>
 
             <SlideUp delay={0.4}>
-              <Card className="bg-card border-border">
+              <Card className="bg-card border-border h-full">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold mb-4 text-amber-500">IoT / Embedded</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">ESP32</Badge>
-                    <Badge variant="outline">Arduino</Badge>
+                    <Badge variant="outline">ESP-IDF</Badge>
+                    <Badge variant="outline">Blynk</Badge>
                     <Badge variant="outline">MQTT</Badge>
-                    <Badge variant="outline">Node.js</Badge>
-                    <Badge variant="outline">Raspberry Pi</Badge>
-                    <Badge variant="outline">InfluxDB</Badge>
+                    <Badge variant="outline">Arduino Platform</Badge>
+                    <Badge variant="outline">ThingSpeak</Badge>
+                    <Badge variant="outline">ThingsBoard</Badge>
+                    <Badge variant="outline">Wokwi</Badge>
+                    <Badge variant="outline">Arduino IDE</Badge>
+                    <Badge variant="outline">PlatformIO</Badge>
                   </div>
                 </CardContent>
               </Card>
             </SlideUp>
 
             <SlideUp delay={0.5}>
-              <Card className="bg-card border-border">
+              <Card className="bg-card border-border h-full">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold mb-4 text-indigo-500">Web Development</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">Next.js</Badge>
                     <Badge variant="outline">TypeScript</Badge>
-                    <Badge variant="outline">React</Badge>
+                    <Badge variant="outline">React / Vite</Badge>
+                    <Badge variant="outline">Express</Badge>
                     <Badge variant="outline">PostgreSQL</Badge>
-                    <Badge variant="outline">Prisma</Badge>
                     <Badge variant="outline">Tailwind CSS</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </SlideUp>
+
+            <SlideUp delay={0.6}>
+              <Card className="bg-card border-border h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-4 text-emerald-500">Mobile Development</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">Flutter</Badge>
+                    <Badge variant="outline">Dart</Badge>
+                    <Badge variant="outline">Kotlin</Badge>
+                    <Badge variant="outline">Android</Badge>
+                    <Badge variant="outline">Jetpack Compose</Badge>
+                    <Badge variant="outline">Room Database</Badge>
                   </div>
                 </CardContent>
               </Card>
@@ -198,7 +223,7 @@ export default function AboutPage() {
               <CardContent className="p-6">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold">Full Stack Developer</h3>
+                    <h3 className="text-lg font-semibold">Polyglot Engineer</h3>
                     <p className="text-primary text-sm">Tech Company • 2023 - Present</p>
                     <p className="text-muted-foreground mt-2">
                       Building AI-powered web applications and IoT solutions for enterprise clients.
