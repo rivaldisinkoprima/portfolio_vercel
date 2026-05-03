@@ -1,0 +1,39 @@
+---
+title: "SmartFeeder Automation"
+description: "An automated poultry feeding system using ESP32, precision load cells, and Blynk for remote monitoring and scheduled feeding."
+category: ["IoT"]
+tags: ["C++", "ESP32", "Arduino", "Blynk", "IoT"]
+date: "2026-05-03"
+image: "/project/SmartFeeder/chick1.jpeg"
+featured: false
+githubUrl: "https://github.com/rivaldiekaptrrr/SmartFeeder"
+---
+
+# SmartFeeder - Automated Poultry System
+
+SmartFeeder is an advanced agricultural IoT prototype designed to automate the feeding process for poultry. Built with an ESP32 microcontroller and seamlessly connected to the Blynk platform, this system provides farmers with remote control, precision dispensing, and real-time feed monitoring to optimize livestock nutrition.
+
+![SmartFeeder Hardware](/project/SmartFeeder/chick1.jpeg)
+
+## Overview
+
+Managing poultry feeding schedules manually can be labor-intensive and inaccurate. SmartFeeder solves this by calculating exact feed portions based on chicken count and age category. Using precision HX711 load cells and high-torque servos, the system dispenses and mixes Maggot and Pur feed automatically at scheduled intervals, reducing waste and ensuring consistent growth.
+
+![SmartFeeder Dashboard](/project/SmartFeeder/chick2.png)
+
+## Tech Stack
+
+- **Microcontroller:** ESP32
+- **Language:** C++ (Arduino Framework)
+- **IoT Platform:** Blynk App (Remote Dashboard)
+- **Sensors & Modules:** HX711 Precision Load Cell, RTC DS3231 (Real-Time Clock), Servo Motors (Dispenser & Mixer), 16x2 I2C LCD Display
+
+## Key Features
+
+- **Precision Dispensing:** Utilizes HX711 load cells to weigh the feed in real-time, ensuring exact portions of Maggot and Pur are dispensed based on a dynamic feeding table.
+- **Automated Mixing:** Features a dedicated servo mixer that evenly blends the different feed types before distributing them to the feeding trough.
+- **RTC Scheduling:** Integrates a DS3231 Real-Time Clock module to trigger automated feeding cycles without relying solely on internet connectivity.
+- **Dual Mode Operation:** 
+  - **Setting Mode:** Users can manually input the chicken count and category via physical potentiometers/buttons or the Blynk app slider.
+  - **Running Mode:** The system autonomously runs the feeding schedule and displays real-time time and status on the LCD.
+- **Live Blynk Dashboard:** Farmers can remotely monitor the remaining feed weight and active schedules from their smartphone.

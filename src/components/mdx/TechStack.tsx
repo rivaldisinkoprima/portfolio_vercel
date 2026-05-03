@@ -42,6 +42,12 @@ const iconMap: Record<string, string> = {
   html: "🌐",
   css: "🎨",
   vite: "⚡",
+  tensorflow: "🧠",
+  keras: "🔬",
+  jupyter: "📓",
+  colab: "☁️",
+  blynk: "📱",
+  arduino: "♾️",
 };
 
 export function TechStack({ icons }: TechStackProps) {

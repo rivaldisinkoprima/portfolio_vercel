@@ -1,0 +1,37 @@
+---
+title: "SmartHome Automation"
+description: "An IoT-based Smart Home system using ESP32 and Blynk for remote door lock, gate control, and PIR motion-activated alarms."
+category: ["IoT"]
+tags: ["C++", "ESP32", "Arduino", "Blynk", "IoT"]
+date: "2026-05-03"
+image: "/project/SmartHome/home1.jpeg"
+featured: false
+githubUrl: "https://github.com/rivaldiekaptrrr/SmartHome"
+---
+
+# SmartHome Automation System
+
+The SmartHome Automation project is a comprehensive Internet of Things (IoT) solution designed to enhance home security and convenience. Built around the powerful ESP32 microcontroller and seamlessly integrated with the Blynk IoT platform, this system allows users to monitor and control their home access points from anywhere in the world.
+
+![Hardware Setup](/project/SmartHome/home1.jpeg)
+
+## Overview
+
+Modern home security requires both physical and remote accessibility. This project bridges that gap by providing a dual-interface approach: a physical keypad for local entry and a mobile application for remote management. Real-time status feedback is displayed locally on an LCD and remotely via push notifications, ensuring homeowners are always informed of their security status.
+
+![Blynk Dashboard](/project/SmartHome/home2.png)
+
+## Tech Stack
+
+- **Microcontroller:** ESP32
+- **Language:** C++ (Arduino Framework)
+- **IoT Platform:** Blynk Cloud & Mobile App
+- **Hardware Components:** Servo Motors (Door & Gate), PIR Motion Sensor, 4x4 Keypad, I2C LCD Display, Active Buzzer
+
+## Key Features
+
+- **Dual-Access Door Lock:** Users can unlock the door using a physical 4x4 matrix keypad with a secure 3-digit PIN, or remotely via the Blynk app. The door automatically secures itself after 3 seconds.
+- **Remote Gate Control:** The main gate can be easily opened or closed using virtual buttons on the Blynk mobile dashboard.
+- **PIR Motion Alarm System:** Features an integrated PIR sensor that detects unauthorized movement. When the alarm is armed via the app, any motion will trigger a loud physical buzzer and instantly send a push notification event (`pir_status`) to the homeowner's smartphone.
+- **Real-Time LCD Feedback:** An I2C LCD screen provides immediate visual feedback for local interactions, displaying prompts like "Enter Pass !!" and warning messages for incorrect PIN entries.
+- **Secure Architecture:** The codebase is structured to keep WiFi and authentication credentials isolated in a `secrets.h` file, demonstrating best practices for IoT security and version control.

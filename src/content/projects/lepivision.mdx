@@ -1,0 +1,36 @@
+---
+title: "LepiVision"
+description: "A deep learning image classification system using CNN and Transfer Learning to identify butterfly species with >95% accuracy."
+category: ["AI"]
+tags: ["Python", "TensorFlow", "Keras", "Jupyter", "Colab"]
+date: "2026-05-03"
+image: "/project/LepiVision/classification.png"
+featured: false
+githubUrl: "https://github.com/rivaldiekaptrrr/LepiVision"
+---
+
+# LepiVision - Butterfly Species Classification
+
+LepiVision is an advanced image classification project designed to recognize and categorize various species of butterflies using deep learning techniques. Built as a core project for intelligent systems, it explores the performance differences between models built from scratch and state-of-the-art transfer learning architectures.
+
+![LepiVision Classification Results](/project/LepiVision/classification.png)
+
+## Overview
+
+Identifying butterfly species manually can be tedious and prone to error. LepiVision automates this process by employing robust Computer Vision algorithms. The project successfully classifies over 40 different species of butterflies and moths by analyzing image features, making it a valuable tool for entomologists and nature enthusiasts. 
+
+## Tech Stack
+
+- **Language:** Python
+- **Frameworks:** TensorFlow, Keras
+- **Environment:** Jupyter Notebook, Google Colab
+- **Architectures:** Sequential CNN, InceptionResNetV2
+
+## Key Features
+
+- **Dual Model Approach:** Implements two distinct models for comparison:
+  1. **Sequential CNN:** A custom Convolutional Neural Network built entirely from scratch with multiple convolutional and pooling layers.
+  2. **Transfer Learning:** Utilizes the highly advanced **InceptionResNetV2** model pre-trained on ImageNet, fine-tuned specifically for the butterfly dataset.
+- **High Accuracy:** Both models were aggressively optimized to achieve a training accuracy of > 95% while keeping the loss metric below 0.001.
+- **Data Augmentation:** Integrates real-time data augmentation (rotation, zoom, shear) to prevent overfitting and improve model generalization on unseen images.
+- **Automated Callbacks:** Employs `ModelCheckpoint` and `EarlyStopping` to preserve the best model weights dynamically during the training lifecycle.
