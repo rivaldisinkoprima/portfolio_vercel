@@ -83,19 +83,14 @@ export default function AboutPage() {
               </div>
 
               <p className="text-foreground/80 leading-relaxed mb-6">
-                I&apos;m a Future Developer with expertise at the intersection of{" "}
-                <span className="text-primary">AI</span>,{" "}
-                <span className="text-amber-500">IoT</span>, and{" "}
-                <span className="text-indigo-500">Web Development</span>.
-                I specialize in building intelligent systems that solve real-world problems.
-                With a strong foundation in both hardware and software, I bring a unique
-                perspective to every project I work on.
+                I am a <strong>Cum Laude Computer Engineering graduate</strong> from Universitas Dinamika, stepping into the industry as a <strong>Future Developer</strong>. I am an adaptive and communicative professional who is always eager to learn new technologies and embrace modern challenges. With strong teamwork skills and a focus on delivering results, I am driven to build scalable, innovative solutions that solve real-world problems. Committed to continuous growth, I aim to make a positive impact by leveraging cutting-edge technology to create efficient systems for the future.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
                 <Badge variant="ai">AI / ML</Badge>
                 <Badge variant="iot">IoT</Badge>
                 <Badge variant="web">Web Development</Badge>
+                <Badge variant="mobile">Mobile Development</Badge>
               </div>
 
               <div className="flex gap-4">
@@ -223,18 +218,22 @@ export default function AboutPage() {
               <CardContent className="p-6">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold">Polyglot Engineer</h3>
-                    <p className="text-primary text-sm">Tech Company • 2023 - Present</p>
-                    <p className="text-muted-foreground mt-2">
-                      Building AI-powered web applications and IoT solutions for enterprise clients.
-                    </p>
+                    <h3 className="text-lg font-semibold">R&amp;D Engineer</h3>
+                    <p className="text-primary text-sm">PT Sinko Prima Alloy • 2024 – Present</p>
+                    <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4 text-sm">
+                      <li>Conducted reverse engineering on 10+ medical devices (Bluetooth, Wi-Fi, LAN, USB) for data integration into the IoT Gateway.</li>
+                      <li>Developed IoT Gateway firmware to process various medical protocols in real-time.</li>
+                      <li>Collaborated cross-functionally to provide technical support and troubleshooting, ensuring seamless system integration.</li>
+                    </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Software Engineer</h3>
-                    <p className="text-primary text-sm">Startup • 2021 - 2023</p>
-                    <p className="text-muted-foreground mt-2">
-                      Developed scalable web applications and learned the fundamentals of machine learning.
-                    </p>
+                    <h3 className="text-lg font-semibold">Internet of Things (IoT) Engineer Camp</h3>
+                    <p className="text-primary text-sm">Indobot Academy • 2023</p>
+                    <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4 text-sm">
+                      <li>Participated in intensive soft skill and technical IoT training guided by professional mentors.</li>
+                      <li>Deepened IoT knowledge and applied skills through structured development assignments.</li>
+                      <li>Designed and evaluated Smart IoT Devices, concluding with a final project titled "Smart DGS (Door Gate Security)".</li>
+                    </ul>
                   </div>
                 </div>
               </CardContent>
@@ -244,38 +243,38 @@ export default function AboutPage() {
 
         <section className="mt-16">
           <SlideUp delay={0.8}>
-            <h2 className="text-2xl font-bold mb-6">Organizational experience</h2>
+            <h2 className="text-2xl font-bold mb-6">Organizational Experience</h2>
           </SlideUp>
           <SlideUp delay={0.9}>
             <Card className="bg-card border-border">
               <CardContent className="p-6">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold">Ketua</h3>
-                    <p className="text-amber-500 text-sm">Himpunan Mahasiswa Teknik Komputer Universitas Dinamika • Jan 2022 – Jan 2023</p>
+                    <h3 className="text-lg font-semibold">President</h3>
+                    <p className="text-amber-500 text-sm">HIMA Teknik Komputer • 2022 – 2023</p>
                     <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4">
-                      <li>Merencanakan pembuatan 8 program kerja satu tahun. Serta mengimplementasikan program kerja yang telah direncanakan pada awal jabatan hingga akhir jabatan.</li>
-                      <li>Menyelenggarakan program kerja &quot;Newcomer&quot; (New Computer Generation). Program kerja ini berfungsi sebagai orientasi bagi mahasiswa baru Teknik Komputer dengan total 30 peserta.</li>
-                      <li>Mengadakan &quot;STS&quot; (Sharing Tuntas Studi), mengundang alumni untuk berbagi pengalaman karir kepada 90 mahasiswa Teknik Komputer.</li>
+                      <li>Planned and executed 8 annual programs, overseeing their implementation from the beginning to the end of the tenure.</li>
+                      <li>Organized the &quot;Newcomer&quot; (New Computer Generation) program, an orientation event for 30 new Computer Engineering students.</li>
+                      <li>Hosted &quot;STS&quot; (Sharing Tuntas Studi), inviting alumni to share career experiences with 90 Computer Engineering students.</li>
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Komisi Advokasi</h3>
-                    <p className="text-amber-500 text-sm">Dewan Perwakilan Mahasiswa Universitas Dinamika • Jan 2021 - Jan 2022</p>
+                    <h3 className="text-lg font-semibold">Advocacy Commission</h3>
+                    <p className="text-amber-500 text-sm">DPM-U • 2021 - 2022</p>
                     <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4">
-                      <li>Menyuarakan aspirasi mahasiswa dengan meninjau 15 aspirasi dan memperjuangkan solusi yang berorientasi pada kepentingan mahasiswa.</li>
-                      <li>Menganalisis dan meninjau ulang 3 kebijakan Universitas yang berdampak pada kenyamanan mahasiswa.</li>
-                      <li>Memimpin &quot;Safari Hima&quot; yang melibatkan diskusi aspirasi dengan 7 Himpunan Mahasiswa.</li>
-                      <li>Menyelenggarakan &quot;Rapat Triwulanan 1&quot; sebagai mekanisme pemantauan kinerja dari 18 Unit Kegiatan Mahasiswa.</li>
+                      <li>Voiced student aspirations by reviewing 15 issues and advocating for student-oriented solutions.</li>
+                      <li>Analyzed and reviewed 3 university policies impacting student welfare.</li>
+                      <li>Led &quot;Safari Hima&quot;, conducting aspiration discussions with 7 Student Associations.</li>
+                      <li>Organized &quot;Quarterly Meeting 1&quot; as a performance monitoring mechanism for 18 Student Activity Units.</li>
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Wakil Ketua</h3>
-                    <p className="text-amber-500 text-sm">Paskibra Dinamika Universitas Dinamika • Jan 2020 – Jan 2021</p>
+                    <h3 className="text-lg font-semibold">Vice President</h3>
+                    <p className="text-amber-500 text-sm">Paskibra Dinamika • 2020 – 2021</p>
                     <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4">
-                      <li>Membantu Ketua dalam mengoordinasikan 7 program kerja di Unit Kegiatan Mahasiswa Paskibra.</li>
-                      <li>Mengadakan Webinar Nasional Anti-Korupsi dengan pembicara dari KPK, diikuti oleh lebih dari 200 peserta.</li>
-                      <li>Menyelenggarakan Webinar Bela Negara dengan pembicara dari Ikatan Alumni Paskibra Jawa Timur, diikuti oleh lebih dari 200 peserta.</li>
+                      <li>Assisted the President in coordinating 7 programs within the Paskibra Student Activity Unit.</li>
+                      <li>Organized a National Anti-Corruption Webinar featuring a speaker from the KPK, attended by over 200 participants.</li>
+                      <li>Hosted a National Defense Webinar featuring a speaker from the East Java Paskibra Alumni Association, attended by over 200 participants.</li>
                     </ul>
                   </div>
                 </div>
