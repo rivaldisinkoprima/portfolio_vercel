@@ -251,25 +251,32 @@ export default function AboutPage() {
               <CardContent className="p-6">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold">Head of Technology</h3>
-                    <p className="text-amber-500 text-sm">Google Developer Student Clubs • 2023 - Present</p>
-                    <p className="text-muted-foreground mt-2">
-                      Leading technical initiatives and organizing workshops for students to learn modern web technologies.
-                    </p>
+                    <h3 className="text-lg font-semibold">Ketua</h3>
+                    <p className="text-amber-500 text-sm">Himpunan Mahasiswa Teknik Komputer Universitas Dinamika • Jan 2022 – Jan 2023</p>
+                    <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4">
+                      <li>Merencanakan pembuatan 8 program kerja satu tahun. Serta mengimplementasikan program kerja yang telah direncanakan pada awal jabatan hingga akhir jabatan.</li>
+                      <li>Menyelenggarakan program kerja &quot;Newcomer&quot; (New Computer Generation). Program kerja ini berfungsi sebagai orientasi bagi mahasiswa baru Teknik Komputer dengan total 30 peserta.</li>
+                      <li>Mengadakan &quot;STS&quot; (Sharing Tuntas Studi), mengundang alumni untuk berbagi pengalaman karir kepada 90 mahasiswa Teknik Komputer.</li>
+                    </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">IoT Researcher</h3>
-                    <p className="text-amber-500 text-sm">Research Institute • 2022 - Present</p>
-                    <p className="text-muted-foreground mt-2">
-                      Conducting research on IoT systems and publishing papers on smart home automation.
-                    </p>
+                    <h3 className="text-lg font-semibold">Komisi Advokasi</h3>
+                    <p className="text-amber-500 text-sm">Dewan Perwakilan Mahasiswa Universitas Dinamika • Jan 2021 - Jan 2022</p>
+                    <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4">
+                      <li>Menyuarakan aspirasi mahasiswa dengan meninjau 15 aspirasi dan memperjuangkan solusi yang berorientasi pada kepentingan mahasiswa.</li>
+                      <li>Menganalisis dan meninjau ulang 3 kebijakan Universitas yang berdampak pada kenyamanan mahasiswa.</li>
+                      <li>Memimpin &quot;Safari Hima&quot; yang melibatkan diskusi aspirasi dengan 7 Himpunan Mahasiswa.</li>
+                      <li>Menyelenggarakan &quot;Rapat Triwulanan 1&quot; sebagai mekanisme pemantauan kinerja dari 18 Unit Kegiatan Mahasiswa.</li>
+                    </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Volunteer</h3>
-                    <p className="text-amber-500 text-sm">Tech Community Events • 2021 - Present</p>
-                    <p className="text-muted-foreground mt-2">
-                      Organizing and volunteering at technology conferences and hackathons.
-                    </p>
+                    <h3 className="text-lg font-semibold">Wakil Ketua</h3>
+                    <p className="text-amber-500 text-sm">Paskibra Dinamika Universitas Dinamika • Jan 2020 – Jan 2021</p>
+                    <ul className="text-muted-foreground mt-2 space-y-1 list-disc list-outside ml-4">
+                      <li>Membantu Ketua dalam mengoordinasikan 7 program kerja di Unit Kegiatan Mahasiswa Paskibra.</li>
+                      <li>Mengadakan Webinar Nasional Anti-Korupsi dengan pembicara dari KPK, diikuti oleh lebih dari 200 peserta.</li>
+                      <li>Menyelenggarakan Webinar Bela Negara dengan pembicara dari Ikatan Alumni Paskibra Jawa Timur, diikuti oleh lebih dari 200 peserta.</li>
+                    </ul>
                   </div>
                 </div>
               </CardContent>
