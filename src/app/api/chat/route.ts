@@ -27,7 +27,7 @@ Anda memiliki akses penuh ke seluruh informasi tentang Rivaldi berikut ini:
    - Fitur: Universal MQTT broker support (HiveMQ, Mosquitto, EMQX, AWS IoT, Azure), rich widget visualization (slider, knob, chart, gauge), Rule Engine offline-first, multi-broker management.
    - GitHub: https://github.com/rivaldiekaptrrr/iotfy-app
 
-2. LyricSync & ESP32 Player (IoT, Mobile) [FEATURED]
+2. LyricSync (IoT, Mobile) [FEATURED]
    - Deskripsi: Sistem audio screening terintegrasi dengan hardware ESP32-S3 dan Flutter mobile app untuk manajemen lirik & sinkronisasi via BLE.
    - Tech: Flutter, Dart, C++ (PlatformIO), ESP32-S3, FreeRTOS, LittleFS, Supabase, BLE
    - Fitur: Audio spike detection untuk timing lirik, BLE synchronization, Cloud OTA update via Supabase CDN, TFT display, DFPlayer audio.
