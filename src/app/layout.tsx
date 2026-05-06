@@ -155,7 +155,7 @@ export default function RootLayout({
                 "Machine Learning",
                 "IoT",
                 "Web Development",
-                "Full Stack Development",
+                "Polyglot Engineer",
                 "Next.js",
                 "Python",
                 "ESP32",
