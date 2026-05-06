@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import { AnimeTyping } from "@/components/ui/AnimeTyping";
 
 export function Hero() {
   const socials = [
@@ -37,8 +38,16 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-xs md:text-sm font-bold text-primary/80 uppercase tracking-widest mb-4">
-                Dynamic Web Portfolio
+              <h2 className="text-xs md:text-sm font-bold text-primary/80 uppercase tracking-widest mb-4 h-5 md:h-6 flex items-center justify-center md:justify-start">
+                <AnimeTyping 
+                  words={[
+                    "Future Developer", 
+                    "Polyglot Engineer", 
+                    "AI Enthusiast", 
+                    "IoT Specialist",
+                    "Dynamic Web Portfolio"
+                  ]} 
+                />
               </h2>
 
               <TextGenerateEffect
