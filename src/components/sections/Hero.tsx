@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export function Hero() {
   const socials = [
@@ -41,8 +42,8 @@ export function Hero() {
                 Dynamic Web Portfolio
               </h2>
 
-              <TextGenerateEffect
-                words="Building Intelligent Systems for the Future"
+              <TextReveal
+                text="Building Intelligent Systems for the Future"
                 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 tracking-tight"
               />
 
