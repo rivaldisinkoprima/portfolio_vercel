@@ -38,7 +38,7 @@ export default function ResumePage() {
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               <a
-                href="https://drive.google.com/uc?export=view&id=1o0RckJ89aXKlGuSaIJ1WJHEdhblAS3wA"
+                href="https://drive.google.com/uc?export=view&id=1ONDeDqFaKF3k6Q19C4wfvI8MyUdde9WR"
                 target="_blank"
                 rel="noopener noreferrer"
               >
