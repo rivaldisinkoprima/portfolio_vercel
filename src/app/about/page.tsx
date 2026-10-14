@@ -137,19 +137,18 @@ export default function AboutPage() {
             <SlideUp delay={0.3}>
               <Card className="bg-card border-border h-full">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 text-primary">AI / Machine Learning</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-primary">AI</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">Python</Badge>
                     <Badge variant="outline">TensorFlow</Badge>
                     <Badge variant="outline">Keras</Badge>
                     <Badge variant="outline">Google Colab</Badge>
-                    <Badge variant="outline">OpenAI</Badge>
-                    <Badge variant="outline">Jupyter</Badge>
                     <Badge variant="outline">OpenClaw</Badge>
-                    <Badge variant="outline">Claude Code</Badge>
                     <Badge variant="outline">Vibe Coding</Badge>
-                    <Badge variant="outline">OpenCode</Badge>
-                    <Badge variant="outline">Antigravity</Badge>
+                    <Badge variant="outline">Ai Automation</Badge>
+                    <Badge variant="outline">N8N</Badge>
+                    <Badge variant="outline">9router</Badge>
+                    <Badge variant="outline">Hermes</Badge>
                   </div>
                 </CardContent>
               </Card>
@@ -158,7 +157,7 @@ export default function AboutPage() {
             <SlideUp delay={0.4}>
               <Card className="bg-card border-border h-full">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 text-amber-500">IoT / Embedded</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-amber-500">IoT</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">ESP32</Badge>
                     <Badge variant="outline">ESP-IDF</Badge>
