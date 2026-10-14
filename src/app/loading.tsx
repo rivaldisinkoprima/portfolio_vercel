@@ -3,7 +3,7 @@ import { BentoSkeleton, HeroSkeleton, Skeleton } from "@/components/ui/skeleton"
 export default function Loading() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-[1440px] mx-auto px-6 py-12">
         <HeroSkeleton />
         <section className="py-16">
           <BentoSkeleton />

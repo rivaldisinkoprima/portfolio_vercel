@@ -174,7 +174,7 @@ export default function RootLayout({
           <Navbar />
           <main id="main-content" className="pt-16">{children}</main>
           <footer className="border-t border-border">
-            <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="max-w-[1440px] mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
               <nav
                 aria-label="Footer"
                 className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 order-1 md:order-2"

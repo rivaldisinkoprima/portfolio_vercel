@@ -29,7 +29,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-10 md:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-10 md:px-12 relative z-10">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 lg:gap-16">
           {/* Text Content */}
           <div className="flex-1 text-center md:text-left mt-8 md:mt-0">
