@@ -182,8 +182,8 @@ export default function AboutPage() {
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">Next.js</Badge>
                     <Badge variant="outline">TypeScript</Badge>
-                    <Badge variant="outline">React / Vite</Badge>
-                    <Badge variant="outline">Express</Badge>
+                    <Badge variant="outline">Supabase</Badge>
+                    <Badge variant="outline">Firebase</Badge>
                     <Badge variant="outline">PostgreSQL</Badge>
                     <Badge variant="outline">Tailwind CSS</Badge>
                   </div>
