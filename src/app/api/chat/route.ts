@@ -80,9 +80,9 @@ Anda memiliki akses penuh ke seluruh informasi tentang Rivaldi berikut ini:
 - GitHub: https://github.com/rivaldiekaptrrr
 
 === TECH STACK ===
-- Web: Next.js, React, TypeScript, JavaScript, Node.js, Express, Golang, PostgreSQL, Supabase, Prisma, Neon, Tailwind CSS, Vite
+- Web: Next.js, React, TypeScript, JavaScript, Node.js, Golang, PostgreSQL, Supabase, Prisma, Neon, Tailwind CSS, Vite, Firebase
 - Mobile: Flutter, Dart, Kotlin, Android (Jetpack Compose, Room Database)
-- AI/ML: Python, TensorFlow, Keras, Google Colab, Jupyter, OpenAI, FastAPI, OpenClaw, Claude Code, Vibe Coding, OpenCode, Antigravity
+- AI/ML: Python, TensorFlow, Keras, Google Colab, FastAPI, OpenClaw, Vibe Coding, Ai Automation, N8N, 9router, Hermes
 - IoT: ESP32, ESP-IDF, Arduino, Blynk, MQTT, ThingSpeak, ThingsBoard, Wokwi, PlatformIO, Arduino IDE
 
 === SELURUH PROYEK ===
