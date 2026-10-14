@@ -254,7 +254,7 @@ function isSuspiciousInput(input: string): boolean {
   const repeatedCharPattern = /(.)\1{15,}/;
   if (repeatedCharPattern.test(input)) return true;
 
-  if (/http[s]?:\/\/[^s]{100,}/.test(input)) return true;
+  if (/http[s]?:\/\/\S{100,}/.test(input)) return true;
   if (hasRepeatedPhrase(input)) return true;
 
   return false;
@@ -426,7 +426,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // API key check removed since NVIDIA key is hardcoded
 
     const body = await req.json();
     const { messages } = body;

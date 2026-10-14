@@ -24,11 +24,15 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <SlideUp>
-          <Hero />
-        </SlideUp>
+      {/* Hero di luar container kolom: latar grid + spotlight harus selebar
+          viewport. Di dalam max-w-6xl, efek latarnya terpotong tepat di tepi
+          container dan tampak sebagai garis vertikal yang tidak menyatu
+          dengan section lain di layar lebar. */}
+      <SlideUp>
+        <Hero />
+      </SlideUp>
 
+      <div className="max-w-6xl mx-auto px-6 pb-12">
         <SlideUp delay={0.1}>
           <TechStack />
         </SlideUp>
