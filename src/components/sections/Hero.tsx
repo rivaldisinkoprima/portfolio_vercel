@@ -23,7 +23,7 @@ export function Hero() {
           className="-top-40 -left-10 md:-left-32 md:-top-20"
           fill="white"
         />
-        <Spotlight className="top-28 left-40 md:left-80" fill="blue" />
+        <Spotlight className="top-40 left-[55%] md:left-[62%]" fill="blue" />
         <div className="absolute h-full w-full bg-background bg-grid-pattern flex items-center justify-center top-0 left-0">
           <div className="absolute inset-0 bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
         </div>
@@ -44,6 +44,7 @@ export function Hero() {
 
               <TextReveal
                 text="Building Intelligent Systems for the Future"
+                as="h1"
                 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 tracking-tight"
               />
 
@@ -53,10 +54,10 @@ export function Hero() {
                   Rivaldi Eka Putra
                 </span>
                 . A Polyglot Engineer crafting solutions at the intersection of{" "}
-                <span className="text-purple-500 font-medium">AI</span>,{" "}
-                <span className="text-amber-500 font-medium">IoT</span>,{" "}
-                <span className="text-indigo-500 font-medium">Web</span>, and{" "}
-                <span className="text-emerald-500 font-medium">Mobile</span>.
+                <span className="text-primary font-medium">AI</span>,{" "}
+                <span className="text-primary font-medium">IoT</span>,{" "}
+                <span className="text-primary font-medium">Web</span>, and{" "}
+                <span className="text-primary font-medium">Mobile</span>.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 items-center md:items-start justify-center md:justify-start">
@@ -129,21 +130,6 @@ export function Hero() {
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-[10px] sm:text-xs font-mono text-foreground whitespace-nowrap">
                   Open to Work
-                </span>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-                className="absolute -bottom-2 -left-2 md:-bottom-6 md:-left-6 bg-card/90 backdrop-blur-sm border border-border p-2.5 sm:p-3 rounded-2xl shadow-xl z-20"
-              >
-                <span className="text-[10px] sm:text-xs font-mono text-primary whitespace-nowrap">
-                  Polyglot Engineer
                 </span>
               </motion.div>
             </div>

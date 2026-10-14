@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjectBySlug, getAllProjects } from "@/lib/projects";
+import { formatDate } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Calendar, Tag, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Tag, Github, ExternalLink } from "lucide-react";
 import { ProjectImage } from "@/components/ui/ProjectImage";
 import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
@@ -82,6 +83,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const projects = getAllProjects();
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject =
+    currentIndex >= 0 && currentIndex < projects.length - 1
+      ? projects[currentIndex + 1]
+      : null;
+
   return (
     <main className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-6 py-12">
@@ -114,7 +123,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  <span>{project.date}</span>
+                  <span>{formatDate(project.date)}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Tag className="w-4 h-4" />
@@ -143,6 +152,37 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </FadeIn>
         </article>
+
+        {(prevProject || nextProject) && (
+          <nav aria-label="Project navigation" className="flex gap-4 mt-16 pt-8 border-t border-border">
+            <div className="flex-1">
+              {prevProject && (
+                <Link href={`/projects/${prevProject.slug}`}>
+                  <Button variant="outline" className="w-full h-auto py-4 px-6 flex flex-col items-start gap-1 whitespace-normal">
+                    <span className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <ArrowLeft className="w-3 h-3" />
+                      Newer project
+                    </span>
+                    <span className="font-semibold text-left">{prevProject.title}</span>
+                  </Button>
+                </Link>
+              )}
+            </div>
+            <div className="flex-1">
+              {nextProject && (
+                <Link href={`/projects/${nextProject.slug}`} className="flex justify-end">
+                  <Button variant="outline" className="w-full h-auto py-4 px-6 flex flex-col items-end gap-1 whitespace-normal">
+                    <span className="flex items-center gap-2 text-xs text-muted-foreground">
+                      Older project
+                      <ArrowRight className="w-3 h-3" />
+                    </span>
+                    <span className="font-semibold text-right">{nextProject.title}</span>
+                  </Button>
+                </Link>
+              )}
+            </div>
+          </nav>
+        )}
       </div>
     </main>
   );

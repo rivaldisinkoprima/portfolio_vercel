@@ -1,16 +1,6 @@
-import Link from "next/link";
 import { getAllProjects } from "@/lib/projects";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { SlideUp } from "@/components/AnimateOnScroll";
-
-const categoryColors = {
-  AI: "ai",
-  IoT: "iot",
-  Web: "web",
-  Mobile: "mobile",
-} as const;
 
 export const metadata = {
   title: "Projects | Polyglot Engineer Portfolio",
@@ -37,54 +27,7 @@ export default function ProjectsPage() {
           </SlideUp>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <SlideUp key={project.slug} delay={0.1 + index * 0.1}>
-              <Link href={`/projects/${project.slug}`}>
-                <Card className="h-full bg-card border-border group hover:border-primary/50 transition-all cursor-pointer hover:glow-cyan overflow-hidden">
-                  {project.image && (
-                    <div className="aspect-video overflow-hidden bg-muted/10">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className={`w-full h-full transition-transform duration-700 ease-out ${
-                          (Array.isArray(project.category) ? project.category.includes("Web") : project.category === "Web")
-                            ? 'object-contain scale-125 group-hover:scale-100'
-                            : 'object-cover group-hover:scale-105'
-                        }`}
-                      />
-                    </div>
-                  )}
-                  <CardContent className="p-6 h-full flex flex-col">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {(Array.isArray(project.category) ? project.category : [project.category]).map(cat => (
-                        <Badge key={cat} variant={categoryColors[cat as keyof typeof categoryColors] || "outline"} className="w-fit">
-                          {cat}
-                        </Badge>
-                      ))}
-                    </div>
-                    <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h2>
-                    <p className="text-muted-foreground text-sm flex-grow">
-                      {project.description}
-                    </p>
-                    <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Calendar className="w-4 h-4" />
-                        <span>{project.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground group-hover:text-primary transition-colors">
-                        <span>View</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </SlideUp>
-          ))}
-        </div>
+        <ProjectsGrid projects={projects} />
       </div>
     </main>
   );

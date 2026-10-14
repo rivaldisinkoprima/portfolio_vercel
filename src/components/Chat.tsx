@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
-import { LottieRobot } from "@/components/LottieRobot";
+import { Mascot } from "@/components/Mascot";
 
 interface Message {
   id: string;
@@ -30,6 +30,51 @@ export function Chat() {
   const [errorCount, setErrorCount] = useState(0);
   const [isCooldown, setIsCooldown] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const openTimerRef = useRef<number | null>(null);
+
+  // Reaksi maskot header yang dipicu peristiwa chat (lihat pemetaan di pemakaian).
+  const [mascotTrigger, setMascotTrigger] = useState<{
+    reaction: "blink" | "heart" | "sparkle" | "surprised" | "wink" | "bashful" | "sleepy" | "dizzy" | "delighted";
+    stamp: number;
+  } | null>(null);
+  const reactHeaderMascot = (
+    reaction: "blink" | "heart" | "sparkle" | "surprised" | "wink" | "bashful" | "sleepy" | "dizzy" | "delighted",
+  ) => {
+    setMascotTrigger({ reaction, stamp: Date.now() });
+  };
+
+  // Maskot floating ikut bereaksi (pejam senang) setiap pengguna mengklik
+  // di mana pun di halaman. Klik pada maskot itu sendiri dikecualikan
+  // (sudah ditangani boop internalnya) dan listener nonaktif saat panel
+  // chat terbuka (maskot floating tersembunyi).
+  const [floatingTrigger, setFloatingTrigger] = useState<{
+    reaction: "blink";
+    stamp: number;
+  } | null>(null);
+  useEffect(() => {
+    if (isOpen) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.button !== 0) return;
+      if (triggerRef.current?.contains(e.target as Node)) return;
+      setFloatingTrigger({ reaction: "blink", stamp: Date.now() });
+    };
+    window.addEventListener("pointerdown", onPointerDown);
+    return () => window.removeEventListener("pointerdown", onPointerDown);
+  }, [isOpen]);
+
+  // Panel dibuka -> maskot header menyambut dengan kilau emas.
+  const wasOpenForMascotRef = useRef(false);
+  useEffect(() => {
+    if (isOpen && !wasOpenForMascotRef.current) {
+      reactHeaderMascot("sparkle");
+    }
+    wasOpenForMascotRef.current = isOpen;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const wasOpenRef = useRef(false);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -83,6 +128,56 @@ export function Chat() {
     scrollToBottom();
   }, [messages, isTyping]);
 
+  // Manajemen fokus dialog (aksesibilitas): fokus masuk ke textarea saat
+  // dibuka, Tab/Shift+Tab terjebak di dalam dialog, Escape menutup dialog,
+  // dan fokus dikembalikan ke tombol pemicu saat dialog ditutup.
+  useEffect(() => {
+    if (!isOpen) {
+      if (wasOpenRef.current) {
+        wasOpenRef.current = false;
+        triggerRef.current?.querySelector("button")?.focus();
+      }
+      return;
+    }
+    wasOpenRef.current = true;
+
+    const dialog = dialogRef.current;
+    const focusTimer = window.setTimeout(() => {
+      textareaRef.current?.focus();
+    }, 60);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsOpen(false);
+        return;
+      }
+      if (e.key !== "Tab" || !dialog) return;
+      const focusable = Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => el.offsetParent !== null);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || !dialog.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !dialog.contains(active))) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    dialog?.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      dialog?.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   const clearChat = () => {
     const newSessionId = Date.now().toString();
     localStorage.setItem(SESSION_ID_KEY, newSessionId);
@@ -99,6 +194,7 @@ export function Chat() {
       role: "assistant",
       content: DEFAULT_WELCOME,
     }]));
+    reactHeaderMascot("bashful");
   };
 
   const sendMessage = async () => {
@@ -112,6 +208,7 @@ export function Chat() {
         content: "Percakapan kita sudah mencapai batas maksimal. Klik tombol sampah (🗑️) untuk memulai percakapan baru ya!",
       };
       setMessages((prev) => [...prev, warningMessage]);
+      reactHeaderMascot("sleepy");
       setInput("");
       return;
     }
@@ -123,12 +220,13 @@ export function Chat() {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    reactHeaderMascot("wink");
     setInput("");
     setIsLoading(true);
     setIsTyping(true);
 
-    try {
-      const response = await fetch("/api/chat", {
+    const callChatApi = async () => {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -139,8 +237,19 @@ export function Chat() {
           sessionId,
         }),
       });
+      return { response: res, data: await res.json() };
+    };
 
-      const data = await response.json();
+    try {
+      let chatResult: { response: Response; data: any };
+      try {
+        chatResult = await callChatApi();
+      } catch {
+        // Ulangi sekali untuk kegagalan jaringan sesaat.
+        await new Promise((r) => setTimeout(r, 800));
+        chatResult = await callChatApi();
+      }
+      const { response, data } = chatResult;
 
       setIsTyping(false);
 
@@ -156,7 +265,8 @@ export function Chat() {
             content: "Maaf, saya sedang perlu istirahat sejenak karena ada kesalahan terlalu banyak. Silakan coba lagi dalam 1 menit ya!",
           };
           setMessages((prev) => [...prev, cooldownMessage]);
-          
+          reactHeaderMascot("sleepy");
+
           setTimeout(() => {
             setIsCooldown(false);
             setErrorCount(0);
@@ -180,6 +290,7 @@ export function Chat() {
             content: errorMsg,
           };
           setMessages((prev) => [...prev, assistantMessage]);
+          reactHeaderMascot("surprised");
         }
         setIsLoading(false);
         return;
@@ -194,6 +305,7 @@ export function Chat() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
+      reactHeaderMascot("delighted");
     } catch (err) {
       void err;
       setIsTyping(false);
@@ -206,6 +318,7 @@ export function Chat() {
         content: "Maaf, terjadi kesalahan koneksi. Silakan coba lagi ya!",
       };
       setMessages((prev) => [...prev, errorMessage]);
+      reactHeaderMascot("dizzy");
     } finally {
       setIsLoading(false);
     }
@@ -218,26 +331,61 @@ export function Chat() {
     }
   };
 
+  // Klik maskot: biarkan animasi "boop" bermain dulu (~450ms), baru buka chat.
+  const handleMascotClick = () => {
+    if (openTimerRef.current) window.clearTimeout(openTimerRef.current);
+    openTimerRef.current = window.setTimeout(() => setIsOpen(true), 450);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (openTimerRef.current) window.clearTimeout(openTimerRef.current);
+    };
+  }, []);
+
   const userMessageCount = messages.filter((m) => m.id !== "welcome" && m.role === "user").length;
   const isAtLimit = userMessageCount >= MAX_SESSION_MESSAGES;
 
   return (
     <>
-      <button
-        onClick={() => setIsOpen(true)}
+      <div
+        ref={triggerRef}
+        onClick={handleMascotClick}
+        title="Chat dengan asisten AI"
         className={cn(
           "fixed bottom-4 right-4 sm:bottom-1 sm:right-6 z-50",
-          "h-14 w-14 sm:h-[140px] sm:w-[140px]",
-          "hover:scale-110 transition-transform duration-200 cursor-pointer",
+          "hover:scale-105 transition-transform duration-200",
           isOpen && "hidden",
         )}
-        style={{ backgroundColor: "transparent" }}
       >
-        <LottieRobot className="hidden sm:block" width={140} height={140} />
-        <LottieRobot className="block sm:hidden" width={56} height={56} />
-      </button>
+        <div className="hidden sm:block">
+          <Mascot
+            directions="/mascots/rivaldi-directions.webp"
+            reactions="/mascots/rivaldi-reactions.webp"
+            size={140}
+            label="Rivaldi"
+            clickReaction="blink"
+            trigger={floatingTrigger}
+          />
+        </div>
+        <div className="block sm:hidden">
+          <Mascot
+            directions="/mascots/rivaldi-directions.webp"
+            reactions="/mascots/rivaldi-reactions.webp"
+            size={64}
+            label="Rivaldi"
+            clickReaction="blink"
+            trigger={floatingTrigger}
+          />
+        </div>
+      </div>
 
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Asisten AI"
+        data-lenis-prevent
         className={cn(
           "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50",
           "w-[calc(100vw-2rem)] sm:w-96 max-w-[calc(100vw-3rem)]",
@@ -248,9 +396,18 @@ export function Chat() {
             : "h-0 opacity-0 translate-y-4 pointer-events-none",
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b bg-muted/50">
+        <div className="flex items-center justify-between px-4 py-2 border-b bg-muted/50">
           <div className="flex items-center gap-2">
-            <Bot className="h-5 w-5 text-primary" />
+            <div className="-my-1">
+              <Mascot
+                directions="/mascots/rivaldi-directions.webp"
+                reactions="/mascots/rivaldi-reactions.webp"
+                size={48}
+                label="Rivaldi"
+                trigger={mascotTrigger}
+                followCursor={false}
+              />
+            </div>
             <span className="font-semibold text-sm">AI Assistant</span>
             {isAtLimit && (
               <span className="text-xs text-orange-500">(Batas tercapai)</span>
@@ -262,17 +419,24 @@ export function Chat() {
               size="icon" 
               onClick={clearChat}
               title="Hapus chat"
+              aria-label="Hapus percakapan"
               className="h-8 w-8"
             >
               <Trash2 className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} aria-label="Tutup chat">
               <X className="h-4 w-4" />
             </Button>
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        <div
+          className="flex-1 overflow-y-auto overscroll-contain p-4 space-y-4"
+          data-lenis-prevent
+          role="log"
+          aria-live="polite"
+          aria-label="Riwayat percakapan"
+        >
           {messages.map((message) => (
             <div
               key={message.id}
@@ -308,7 +472,7 @@ export function Chat() {
             </div>
           ))}
           {isTyping && (
-            <div className="flex gap-2">
+            <div className="flex gap-2" aria-hidden="true">
               <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
                 <Bot className="h-5 w-5" />
               </div>
@@ -339,9 +503,11 @@ export function Chat() {
         <div className="p-4 border-t">
           <div className="flex gap-2">
             <Textarea
+              ref={textareaRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
+              aria-label="Ketik pesan untuk asisten AI"
               placeholder={
                 isCooldown 
                   ? "Sedang cooldown..." 
@@ -356,6 +522,7 @@ export function Chat() {
               onClick={sendMessage}
               disabled={isLoading || !input.trim() || isCooldown || isAtLimit}
               size="icon"
+              aria-label="Kirim pesan"
             >
               <Send className="h-4 w-4" />
             </Button>

@@ -1,0 +1,38 @@
+---
+title: "Dongle ECG Transfer"
+description: "An ESP32-S3 medical data dongle that acts as a virtual USB flash drive, automatically transferring examination files from medical devices to a server over WiFi."
+category: ["IoT"]
+tags: ["ESP32-S3", "ESP-IDF", "USB MSC", "SDCard", "FTP", "OTA", "C++"]
+date: "2026-10-13"
+image: "/project/DongleECG/device.jpg"
+featured: true
+---
+
+Dongle ECG Transfer is a purpose-built medical IoT device that bridges the gap between standalone medical equipment and hospital information systems. Built around the ESP32-S3 with an SDCard module, the dongle presents itself to medical devices as an ordinary USB flash drive — while silently and automatically forwarding every examination file to a central server over WiFi.
+
+![Medic Dongle Device](/project/DongleECG/device.jpg)
+
+## Overview
+
+Many medical devices (ECG machines, patient monitors, analyzers) can only export their examination results to a USB flash drive, forcing staff to manually collect, carry, and upload files to a server. Dongle ECG Transfer eliminates that manual chain entirely: the medical device "sees" a standard USB Mass Storage drive and writes files to it as usual, while the ESP32-S3 firmware detects new files, stores them on internal storage or SDCard, and pushes them to an FTP server automatically over the WiFi network — ready to be consumed by a monitoring dashboard.
+
+![Dongle ECG Transfer Overview](/project/DongleECG/poster.jpg)
+
+## Tech Stack
+
+- **Microcontroller:** ESP32-S3
+- **Framework:** ESP-IDF
+- **Language:** C++
+- **USB:** USB Mass Storage Class (MSC) device mode with external storage
+- **Storage:** Internal flash + SDCard module
+- **Connectivity:** WiFi, FTP client
+- **Updates:** OTA firmware update via cloud storage
+
+## Key Features
+
+- **Virtual USB Flash Drive:** Implements USB Mass Storage so medical devices recognize the dongle as a standard flash drive — no drivers or device-side changes required.
+- **Automatic File Capture:** Examination result files written by the medical device are automatically saved to internal storage / SDCard.
+- **Automatic FTP Upload:** Stored files are transferred to the server over WiFi without human intervention, reducing manual data handling.
+- **OTA Firmware Updates:** Firmware can be updated remotely via cloud storage, keeping deployed units current without physical access.
+- **Storage Management:** Automated storage handling and data delivery pipeline keep the device running unattended.
+- **End-to-End Data Flow:** Medical Device → ESP32-S3 (USB MSC) → Internal Storage / SDCard → FTP Transfer → Server → Monitoring Dashboard, supporting more efficient medical data digitalization and integration.

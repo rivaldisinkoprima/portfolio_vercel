@@ -1,0 +1,39 @@
+---
+title: "Medical IoT Gateway"
+description: "An ESP32-based IoT gateway that bridges medical devices to a real-time monitoring platform via MQTT."
+category: ["IoT"]
+tags: ["ESP32", "ESP-IDF", "MQTT", "RTOS", "BLE", "C++"]
+date: "2026-10-13"
+image: "/project/IoTGateway/device.jpg"
+featured: true
+---
+
+Medical IoT Gateway is an ESP32-based gateway device that acts as a universal communication bridge between medical devices and a centralized monitoring platform. By speaking each device's native protocol and normalizing everything into MQTT, it streams health data to a real-time dashboard — unifying 15+ medical devices into a single digital health system.
+
+![Medical IoT Gateway Device](/project/IoTGateway/device.jpg)
+
+## Overview
+
+Hospitals and clinics often run a mix of medical devices that each speak a different communication protocol, leaving valuable examination data stranded on isolated machines. The Medical IoT Gateway solves this by sitting between the devices and the cloud: it collects health data over BLE, TCP/IP, and USB simultaneously, processes it through a reliable RTOS-based firmware pipeline, and publishes it to an MQTT network for real-time visualization on a monitoring dashboard.
+
+![Medical IoT Gateway Workflow](/project/IoTGateway/workflow.jpg)
+
+## Tech Stack
+
+- **Microcontroller:** ESP32
+- **Framework:** ESP-IDF
+- **Language:** C++
+- **RTOS:** Real-time operating system for firmware reliability
+- **Protocols In:** BLE, TCP/IP, USB (simultaneous)
+- **Protocol Out:** MQTT (encrypted, real-time)
+- **Pipeline:** Real-time data pipeline to monitoring dashboard
+
+## Key Features
+
+- **Multi-Protocol Ingestion:** Communicates with medical devices over BLE, TCP/IP, and USB at the same time — no single-protocol limitation.
+- **Protocol Reverse Engineering:** Firmware built on reverse-engineered medical device communication protocols to unlock data from closed devices.
+- **MQTT Bridge:** Normalizes heterogeneous device data into encrypted MQTT messages for real-time delivery.
+- **RTOS Reliability:** Runs on a real-time operating system, keeping the gateway stable for continuous 24/7 operation.
+- **Real-Time Data Pipeline:** Purpose-built pipeline streams medical data to the dashboard monitoring platform with minimal latency.
+- **Proven at Scale:** Successfully integrated 15+ medical devices into one platform, simplifying healthcare data digitalization and integration in a single system.
+- **End-to-End Data Flow:** Medical Device → IoT Gateway → Publish MQTT → Dashboard Monitoring.

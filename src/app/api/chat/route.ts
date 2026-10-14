@@ -2,6 +2,72 @@ import { NextRequest, NextResponse } from "next/server";
 import Groq from "groq-sdk";
 import { Mistral } from "@mistralai/mistralai";
 
+// Batas durasi eksekusi fungsi di Vercel (detik); staggered race selesai jauh sebelum ini
+export const maxDuration = 30;
+
+// Race promise dengan timeout agar provider yang menggantung tidak menahan selamanya
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  let timer: ReturnType<typeof setTimeout>;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
+
+const STAGGER_MS = 3000;
+const PROVIDER_TIMEOUT_MS = 10000;
+
+// Staggered race antar-provider: provider pertama mulai duluan; bila belum
+// menjawab dalam STAGGER_MS, provider berikutnya ikut mulai. Jawaban sukses
+// pertama yang dipakai. Menghindari penjumlahan waktu tunggu berurutan yang
+// bisa menembus batas durasi fungsi.
+async function firstSuccessfulResponse(
+  messages: { role: string; content: string }[],
+): Promise<{ text: string; provider: string }> {
+  const attempts: { name: string; run: () => Promise<string> }[] = [
+    { name: "freellm", run: () => getFreeLLMResponse(messages) },
+    { name: "groq", run: () => getGroqResponse(messages) },
+    { name: "openrouter", run: () => getOpenRouterResponse(messages) },
+    { name: "mistral", run: () => getMistralResponse(messages) },
+  ];
+
+  return new Promise((resolve, reject) => {
+    let settled = 0;
+    let finished = false;
+    const failures: string[] = [];
+
+    const fail = (name: string, err: unknown) => {
+      failures.push(`${name}: ${err instanceof Error ? err.message : String(err)}`);
+      settled += 1;
+      if (!finished && settled === attempts.length) {
+        finished = true;
+        reject(new Error(failures.join(" | ")));
+      }
+    };
+
+    attempts.forEach((attempt, i) => {
+      const start = () => {
+        if (finished) return;
+        withTimeout(attempt.run(), PROVIDER_TIMEOUT_MS, attempt.name)
+          .then((text) => {
+            if (finished) return;
+            if (text) {
+              finished = true;
+              resolve({ text, provider: attempt.name });
+            } else {
+              fail(attempt.name, new Error("empty response"));
+            }
+          })
+          .catch((err) => {
+            if (!finished) fail(attempt.name, err);
+          });
+      };
+      if (i === 0) start();
+      else setTimeout(start, STAGGER_MS * i);
+    });
+  });
+}
+
 const SYSTEM_PROMPT = `Anda adalah asisten virtual cerdas yang mendampingi pengunjung di portfolio Rivaldi Eka Putra.
 Anda memiliki akses penuh ke seluruh informasi tentang Rivaldi berikut ini:
 
@@ -78,6 +144,16 @@ Anda memiliki akses penuh ke seluruh informasi tentang Rivaldi berikut ini:
     - Tech: Web-based
     - GitHub: https://github.com/rivaldiekaptrrr/Test-App
 
+11. Dongle ECG Transfer (IoT) [FEATURED]
+    - Deskripsi: Dongle data medis berbasis ESP32-S3 + SDCard Module yang berfungsi sebagai USB Flash Drive virtual; file hasil pemeriksaan dari alat medis otomatis ditransfer ke server via WiFi.
+    - Tech: ESP32-S3, ESP-IDF, C++, USB Mass Storage (MSC), SDCard, FTP, OTA via cloud storage
+    - Fitur: Alat medis mengenali perangkat sebagai flash drive USB tanpa driver, file hasil pemeriksaan tersimpan otomatis ke storage, upload otomatis ke FTP server via WiFi, OTA firmware update, alur data: Medical Device → ESP32-S3 (USB MSC) → Storage/SDCard → FTP → Server → Dashboard Monitoring.
+
+12. Medical IoT Gateway (IoT) [FEATURED]
+    - Deskripsi: IoT Gateway berbasis ESP32 yang menjadi jembatan komunikasi antara perangkat medis dan platform monitoring melalui MQTT secara real-time.
+    - Tech: ESP32, ESP-IDF, C++, RTOS, MQTT, BLE, TCP/IP, USB
+    - Fitur: Reverse engineering protokol komunikasi alat medis, komunikasi BLE/TCP/IP/USB simultan, data pipeline real-time, firmware RTOS yang andal, 15+ perangkat medis terintegrasi dalam satu platform, alur data: Medical Device → IoT Gateway → Publish MQTT → Dashboard Monitoring.
+
 === INSTRUKSI ===
 Jawab dalam bahasa Indonesia atau English sesuai preferensi user.
 Gunakan bahasa yang sopan, profesional, dan informatif. Pahami konteks percakapan dan riwayat chat sebelumnya.
@@ -141,6 +217,36 @@ function isDuplicate(ip: string, message: string): boolean {
   return false;
 }
 
+// Deteksi frasa berulang (spam) TANPA regex backreference — pola lama
+// /(.+){1,50}\1{3,}/ mengalami catastrophic backtracking pada pesan natural
+// (pesan 35 karakter bisa membekukan event loop >20 detik hingga fungsi
+// dibunuh Vercel dan user menerima 504). Implementasi ini linear dan aman:
+// cari substring 8-20 karakter yang muncul 3x+ secara tidak tumpang tindih.
+function hasRepeatedPhrase(input: string): boolean {
+  const s = input.toLowerCase();
+  if (s.length < 24) return false;
+
+  for (let len = 8; len <= 20; len++) {
+    if (len * 3 > s.length) break;
+    const seen = new Set<string>();
+    for (let i = 0; i + len <= s.length; i++) {
+      const sub = s.slice(i, i + len);
+      if (seen.has(sub)) continue;
+      seen.add(sub);
+      let count = 0;
+      let pos = 0;
+      while (true) {
+        const found = s.indexOf(sub, pos);
+        if (found === -1) break;
+        count += 1;
+        if (count >= 3) return true;
+        pos = found + len;
+      }
+    }
+  }
+  return false;
+}
+
 function isSuspiciousInput(input: string): boolean {
   if (!input || input.trim().length === 0) return true;
   if (input.length > MAX_INPUT_LENGTH) return true;
@@ -148,16 +254,62 @@ function isSuspiciousInput(input: string): boolean {
   const repeatedCharPattern = /(.)\1{15,}/;
   if (repeatedCharPattern.test(input)) return true;
 
-  const spamPatterns = [
-    /http[s]?:\/\/[^s]{100,}/,
-    /(.+){1,50}\1{3,}/i,
-  ];
-
-  for (const pattern of spamPatterns) {
-    if (pattern.test(input)) return true;
-  }
+  if (/http[s]?:\/\/[^s]{100,}/.test(input)) return true;
+  if (hasRepeatedPhrase(input)) return true;
 
   return false;
+}
+
+async function getFreeLLMResponse(messages: { role: string; content: string }[]) {
+  const baseUrl = process.env.FREELLM_BASE_URL || "https://freellm.valtech.my.id/v1";
+  const apiKey = process.env.FREELLM_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("FREELLM_API_KEY is not configured");
+  }
+
+  const chatMessages = [
+    { role: "system", content: SYSTEM_PROMPT },
+    ...messages.slice(-10),
+  ];
+
+  // Timeout 20 detik untuk mencegah hang
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+  try {
+    const response = await fetch(`${baseUrl}/chat/completions`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "auto",
+        messages: chatMessages,
+        temperature: 0.7,
+        top_p: 0.95,
+        max_tokens: 2048,
+      }),
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error("FreeLLM API Detail Error:", JSON.stringify(errorData, null, 2));
+      throw new Error(`FreeLLM API Error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    const message = data.choices[0]?.message;
+    const content = message?.content || message?.reasoning || "";
+    return typeof content === "string" ? content : "";
+  } catch (err: any) {
+    console.error("Fetch to FreeLLM specifically failed with:", err.message);
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
 async function getOpenRouterResponse(messages: { role: string; content: string }[]) {
@@ -175,7 +327,7 @@ async function getOpenRouterResponse(messages: { role: string; content: string }
 
   // Timeout 20 detik untuk mencegah hang
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 20000);
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
 
   try {
     const response = await fetch(url, {
@@ -218,6 +370,8 @@ async function getOpenRouterResponse(messages: { role: string; content: string }
 async function getGroqResponse(messages: { role: string; content: string }[]) {
   const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
+    timeout: 8000,
+    maxRetries: 0,
   });
 
   const chatMessages = [
@@ -314,28 +468,11 @@ export async function POST(req: NextRequest) {
     let provider = "";
 
     try {
-      response = await getOpenRouterResponse(userMessages);
-      provider = "OpenRouter (tencent/hy3-preview)";
-    } catch (openrouterError: any) {
-      console.warn("OpenRouter API failed, falling back to Groq...", openrouterError.message);
-
-      if (process.env.GROQ_API_KEY) {
-        try {
-          response = await getGroqResponse(userMessages);
-          provider = "groq";
-        } catch (groqError: any) {
-          console.warn("Groq failed, falling back to Mistral...", groqError.message);
-
-          if (process.env.MISTRAL_API_KEY) {
-            try {
-              response = await getMistralResponse(userMessages);
-              provider = "mistral";
-            } catch (mistralError) {
-              console.error("Mistral API Error:", mistralError);
-            }
-          }
-        }
-      }
+      const winner = await firstSuccessfulResponse(userMessages);
+      response = winner.text;
+      provider = winner.provider;
+    } catch (allError: any) {
+      console.error("All providers failed:", allError.message);
     }
 
     if (!response) {

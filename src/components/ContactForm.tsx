@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
@@ -21,6 +21,13 @@ export function ContactForm() {
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<FormErrors>({});
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (formState === "success") {
+      successHeadingRef.current?.focus();
+    }
+  }, [formState]);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -88,7 +95,7 @@ export function ContactForm() {
       <Card className="bg-card border-border">
         <CardContent className="p-8 text-center">
           <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
+          <h3 ref={successHeadingRef} tabIndex={-1} className="text-xl font-semibold mb-2">Message Sent!</h3>
           <p className="text-muted-foreground mb-6">
             Thank you for reaching out. I&apos;ll get back to you as soon as possible.
           </p>
@@ -114,11 +121,15 @@ export function ContactForm() {
               name="name"
               value={formData.name}
               onChange={handleChange}
+              required
+              autoComplete="name"
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? "name-error" : undefined}
               className="w-full px-4 py-3 rounded-lg bg-muted border border-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               placeholder="Your name"
             />
             {errors.name && (
-              <p className="text-destructive text-sm mt-1">{errors.name}</p>
+              <p id="name-error" role="alert" className="text-destructive text-sm mt-1">{errors.name}</p>
             )}
           </div>
 
@@ -132,11 +143,15 @@ export function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              required
+              autoComplete="email"
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "email-error" : undefined}
               className="w-full px-4 py-3 rounded-lg bg-muted border border-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               placeholder="your@email.com"
             />
             {errors.email && (
-              <p className="text-destructive text-sm mt-1">{errors.email}</p>
+              <p id="email-error" role="alert" className="text-destructive text-sm mt-1">{errors.email}</p>
             )}
           </div>
 
@@ -150,11 +165,14 @@ export function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               rows={5}
+              required
+              aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? "message-error" : undefined}
               className="w-full px-4 py-3 rounded-lg bg-muted border border-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
               placeholder="Your message..."
             />
             {errors.message && (
-              <p className="text-destructive text-sm mt-1">{errors.message}</p>
+              <p id="message-error" role="alert" className="text-destructive text-sm mt-1">{errors.message}</p>
             )}
           </div>
 

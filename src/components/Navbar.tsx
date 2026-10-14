@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useLayoutEffect, useSyncExternalStore } from "react";
+import { useState, useEffect, useLayoutEffect, useSyncExternalStore, useRef } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,6 +28,9 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const hydrated = useHydrated();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
 
   useLayoutEffect(() => {
     const stored = localStorage.getItem("theme");
@@ -53,6 +56,27 @@ export function Navbar() {
     return () => {
       document.body.style.overflow = "unset";
     };
+  }, [isOpen]);
+
+  // Tutup menu mobile dengan Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
+
+  // Manajemen fokus: saat menu dibuka fokus ke link pertama,
+  // saat ditutup kembalikan fokus ke tombol hamburger
+  useEffect(() => {
+    if (isOpen) {
+      menuRef.current?.querySelector("a")?.focus();
+    } else if (wasOpenRef.current) {
+      hamburgerRef.current?.focus();
+    }
+    wasOpenRef.current = isOpen;
   }, [isOpen]);
 
   const toggleTheme = () => {
@@ -127,9 +151,12 @@ export function Navbar() {
               </button>
             )}
             <button
+              ref={hamburgerRef}
               className="relative z-50 p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle Menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -141,6 +168,8 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={menuRef}
+            id="mobile-menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

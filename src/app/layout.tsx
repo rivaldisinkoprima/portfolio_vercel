@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
+import Link from "next/link";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { HitCounter } from "@/components/HitCounter";
 import { Chat } from "@/components/Chat";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
@@ -167,12 +168,64 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md">Lewati ke konten utama</a>
         <ThemeProvider>
           <SmoothScroll />
           <Navbar />
-          <main className="pt-16">{children}</main>
-          <footer className="py-8 text-center">
-            <HitCounter />
+          <main id="main-content" className="pt-16">{children}</main>
+          <footer className="border-t border-border">
+            <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+              <nav
+                aria-label="Footer"
+                className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 order-1 md:order-2"
+              >
+                {[
+                  { href: "/", label: "Home" },
+                  { href: "/about", label: "About" },
+                  { href: "/projects", label: "Projects" },
+                  { href: "/resume", label: "Resume" },
+                  { href: "/contact", label: "Contact" },
+                ].map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+              <div className="flex items-center gap-2 order-2 md:order-3">
+                <a
+                  href="https://instagram.com/rivaldiekaptr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/rivaldiekaputr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a
+                  href="mailto:rivaldiekaputr@gmail.com"
+                  aria-label="Email"
+                  className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
+              </div>
+              <p className="text-sm text-muted-foreground text-center md:text-left order-3 md:order-1">
+                © 2026 Rivaldi Eka Putra. All rights reserved.
+              </p>
+            </div>
           </footer>
           <Chat />
         </ThemeProvider>

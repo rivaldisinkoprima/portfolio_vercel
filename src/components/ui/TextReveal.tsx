@@ -6,10 +6,11 @@ import { animate, createScope, splitText, stagger } from "animejs";
 interface TextRevealProps {
   text: string;
   className?: string;
+  as?: "h1" | "div";
 }
 
-export const TextReveal: React.FC<TextRevealProps> = ({ text, className }) => {
-  const root = useRef<HTMLDivElement>(null);
+export const TextReveal: React.FC<TextRevealProps> = ({ text, className, as = "div" }) => {
+  const root = useRef<any>(null);
   const scope = useRef<any>(null);
 
   useEffect(() => {
@@ -39,11 +40,13 @@ export const TextReveal: React.FC<TextRevealProps> = ({ text, className }) => {
     };
   }, [text]);
 
+  const Tag = as;
+
   return (
-    <div ref={root} className={className}>
+    <Tag ref={root} className={className}>
       <span className="reveal-text inline-block" style={{ perspective: '1000px' }}>
         {text}
       </span>
-    </div>
+    </Tag>
   );
 };
