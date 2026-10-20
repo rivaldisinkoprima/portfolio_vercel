@@ -1,5 +1,5 @@
 ---
-title: "Dongle ECG Transfer"
+title: "Medic Dongle"
 description: "An ESP32-S3 medical data dongle that acts as a virtual USB flash drive, automatically transferring examination files from medical devices to a server over WiFi."
 category: ["IoT"]
 tags: ["ESP32-S3", "ESP-IDF", "USB MSC", "SDCard", "FTP", "OTA", "C++"]
@@ -8,15 +8,15 @@ image: "/project/DongleECG/device.jpg"
 featured: true
 ---
 
-Dongle ECG Transfer is a purpose-built medical IoT device that bridges the gap between standalone medical equipment and hospital information systems. Built around the ESP32-S3 with an SDCard module, the dongle presents itself to medical devices as an ordinary USB flash drive — while silently and automatically forwarding every examination file to a central server over WiFi.
+Medic Dongle is a purpose-built medical IoT device that bridges the gap between standalone medical equipment and hospital information systems. Built around the ESP32-S3 with an SDCard module, the dongle presents itself to medical devices as an ordinary USB flash drive — while silently and automatically forwarding every examination file to a central server over WiFi.
 
 ![Medic Dongle Device](/project/DongleECG/device.jpg)
 
 ## Overview
 
-Many medical devices (ECG machines, patient monitors, analyzers) can only export their examination results to a USB flash drive, forcing staff to manually collect, carry, and upload files to a server. Dongle ECG Transfer eliminates that manual chain entirely: the medical device "sees" a standard USB Mass Storage drive and writes files to it as usual, while the ESP32-S3 firmware detects new files, stores them on internal storage or SDCard, and pushes them to an FTP server automatically over the WiFi network — ready to be consumed by a monitoring dashboard.
+Many medical devices (ECG machines, patient monitors, analyzers) can only export their examination results to a USB flash drive, forcing staff to manually collect, carry, and upload files to a server. Medic Dongle eliminates that manual chain entirely: the medical device "sees" a standard USB Mass Storage drive and writes files to it as usual, while the ESP32-S3 firmware detects new files, stores them on internal storage or SDCard, and pushes them to an FTP server automatically over the WiFi network — ready to be consumed by a monitoring dashboard.
 
-![Dongle ECG Transfer Overview](/project/DongleECG/poster.jpg)
+![Medic Dongle Overview](/project/DongleECG/poster.jpg)
 
 ## Tech Stack
 

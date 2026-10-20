@@ -144,7 +144,7 @@ Anda memiliki akses penuh ke seluruh informasi tentang Rivaldi berikut ini:
     - Tech: Web-based
     - GitHub: https://github.com/rivaldiekaptrrr/Test-App
 
-11. Dongle ECG Transfer (IoT) [FEATURED]
+11. Medic Dongle (IoT) [FEATURED]
     - Deskripsi: Dongle data medis berbasis ESP32-S3 + SDCard Module yang berfungsi sebagai USB Flash Drive virtual; file hasil pemeriksaan dari alat medis otomatis ditransfer ke server via WiFi.
     - Tech: ESP32-S3, ESP-IDF, C++, USB Mass Storage (MSC), SDCard, FTP, OTA via cloud storage
     - Fitur: Alat medis mengenali perangkat sebagai flash drive USB tanpa driver, file hasil pemeriksaan tersimpan otomatis ke storage, upload otomatis ke FTP server via WiFi, OTA firmware update, alur data: Medical Device → ESP32-S3 (USB MSC) → Storage/SDCard → FTP → Server → Dashboard Monitoring.
